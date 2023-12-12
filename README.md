@@ -3,4 +3,4 @@
 - lengkapi dan implementasi primitif
 - implementasi CRUD
 - implementasi UI
-- tldr SEMUANYA 
+- tldr SEMUANYA 😭😭😭
