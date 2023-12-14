@@ -33,9 +33,49 @@ void insertAfterCourse(ListCourse &L, addressCourse Prec, addressCourse P){
         next(Prec) = P;
     }        
 }
-void deleteFirstCourse(ListCourse &L, addressCourse &P);
-void deleteLastCourse(ListCourse &L, addressCourse &P);
-void deleteAfterCourse(addressCourse Prec, addressCourse &P);
+
+void deleteFirstCourse(ListCourse &L, addressCourse &P){
+    if (first(L) == NULL){
+        cout << "List Kosong" << endl;
+    } else  if (next(first(L)) == NULL){
+        P = first(L);
+        first(L) = NULL;
+    } else {
+        P = first(L);
+        first(L) = next(P);
+        next(P) = NULL;
+    }
+}
+
+void deleteLastCourse(ListCourse &L, addressCourse &P){
+    if (first(L) == NULL){
+        cout << "List Kosong" << endl;
+    } else  if (next(first(L)) == NULL){
+        P = first(L);
+        first(L) = NULL;
+    } else {
+        addressLastCourse Q;
+        P = first(L);
+        while (P != NULL){
+            Q = P;
+            P = next(P);
+        }
+        next(Q) = NULL;
+    }
+}
+
+void deleteAfterCourse(ListCourse &L, addressCourse Prec, addressCourse &P){
+    if (first(L) == NULL){
+        cout << "List Kosong" << endl;
+    } else  if (next(first(L)) == NULL){
+        P = first(L);
+        first(L) = NULL;
+    } else {
+        P = next(Prec);
+        next(Prec) = next(P);
+        next(P) = NULL;
+    }
+}
 
 addressCourse alokasiCourse(infotypeCourse x){
     addressCourse P = new elmlistCourse;
