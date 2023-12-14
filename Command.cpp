@@ -2,8 +2,30 @@
 #include "Lecturer.h"
 #include "Course.h"
 
-void jawabQuiz(ListCourse L){
+void jawabQuiz(ListCourse LC, ListStudent &LS, bool permission){
+    if (!permission){
+        cout << "Anda tidak dapat menggunakan fitur ini" << endl; 
+    } else {
+        string tempKode;
+        
+        cout << "Masukkan kode Mahasiswa:";
+        cin >> tempKode;
 
+        addressStudent P = findElmStudent(LS, tempKode);
+
+        if (P == NULL){
+            cout << "Mahasiswa tidak ditemukan." << endl;
+        } else {
+            showAllStudentCourse(P);
+
+            cout << ""
+            
+            int nSoal = 0;
+            while (nSoal != NMAX){
+                
+            }
+        }
+    }
 }
 
 void addQuiz(ListCourse &L, bool permission){
