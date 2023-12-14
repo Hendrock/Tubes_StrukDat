@@ -43,10 +43,10 @@ struct ListCourse{
 void createListCourse(ListCourse &L);
 void insertFirstCourse(ListCourse &L, addressCourse P);
 void insertLastCourse(ListCourse &L, addressCourse P);
-void insertAfterCourse(addressCourse Prec, addressCourse P);
+void insertAfterCourse(ListCourse &L, addressCourse Prec, addressCourse P);
 void deleteFirstCourse(ListCourse &L, addressCourse &P);
 void deleteLastCourse(ListCourse &L, addressCourse &P);
-void deleteAfterCourse(addressCourse Prec, addressCourse &P);
+void deleteAfterCourse(ListCourse &L, addressCourse Prec, addressCourse &P);
 
 addressCourse alokasiCourse(infotypeCourse x);
 void dealokasiCourse(addressCourse &P);
