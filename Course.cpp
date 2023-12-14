@@ -1,17 +1,17 @@
 #include "Course.h"
 
-addressCourse alokasi(infotypeCourse x){
+addressCourse alokasiCourse(infotypeCourse x){
     addressCourse P = new elmlistCourse;
     info(P) = x;
     next(P) = NULL;
     return P;
 }
 
-void dealokasi(addressCourse &P){
+void dealokasiCourse(addressCourse &P){
     delete (P);
 }
 
-addressCourse findElm(ListCourse L, string x){
+addressCourse findElmCourse(ListCourse L, string x){
     addressCourse P = first(L);
 
     do{
@@ -22,7 +22,7 @@ addressCourse findElm(ListCourse L, string x){
     }(while P != NULL);
 }
 
-void printInfo(ListCourse L){
+void printInfoCourse(ListCourse L){
     addressCourse P = first(L);
 
     cout << "-----------------------------------" << endl;
