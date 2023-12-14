@@ -2,13 +2,13 @@
 #include "Course.h"
 #include "Student.h"
 
-void createListRelasiCourseStudent(ListRelasiCourseStudent &L){
+void createListRelasiCourseStudent(ListRelasiCourseStudent &L) {
     first(L) = NULL;
     last(L) = NULL;
 }
 
-void insertFirstRelasiCourseStudent(ListRelasiCourseStudent &L, addressRelasiCourseStudent P){
-    if (first(L) == NULL){
+void insertFirstRelasiCourseStudent(ListRelasiCourseStudent &L, addressRelasiCourseStudent P) {
+    if (first(L) == NULL) {
         first(L) = P;
     } else {
         next(P) = first(L);
@@ -16,28 +16,29 @@ void insertFirstRelasiCourseStudent(ListRelasiCourseStudent &L, addressRelasiCou
     }
 }
 
-void insertLastRelasiCourseStudent(ListRelasiCourseStudent &L, addressRelasiCourseStudent P){
-    if (fisrt(L) == NULL){
-        first(L) == P;
+void insertLastRelasiCourseStudent(ListRelasiCourseStudent &L, addressRelasiCourseStudent P) {
+    if (first(L) == NULL) {
+        first(L) = P;
+        last(L) = P;
     } else {
         next(last(L)) = P;
         last(L) = P;
     }
 }
 
-void insertAfterRelasiCourseStudent(ListRelasiCourseStudent &L, addressRelasiCourseStudent Prec, addressRelasiCourseStudent P){
-    if (first(L) == NULL){
+void insertAfterRelasiCourseStudent(ListRelasiCourseStudent &L, addressRelasiCourseStudent Prec, addressRelasiCourseStudent P) {
+    if (first(L) == NULL) {
         first(L) = P;
     } else {
         next(P) = next(Prec);
         next(Prec) = P;
-    }        
+    }
 }
 
-void deleteFirstRelasiCourseStudent(ListRelasiCourseStudent &L, addressRelasiCourseStudent &P){
-    if (first(L) == NULL){
+void deleteFirstRelasiCourseStudent(ListRelasiCourseStudent &L, addressRelasiCourseStudent &P) {
+    if (first(L) == NULL) {
         cout << "List Kosong" << endl;
-    } else if (next(first(L)) == NULL){
+    } else if (next(first(L)) == NULL) {
         P = first(L);
         first(L) = NULL;
         last(L) = NULL;
@@ -48,29 +49,29 @@ void deleteFirstRelasiCourseStudent(ListRelasiCourseStudent &L, addressRelasiCou
     }
 }
 
-void deleteLastRelasiCourseStudent(ListRelasiCourseStudent &L, addressRelasiCourseStudent &P){
-    if (first(L) == NULL){
+void deleteLastRelasiCourseStudent(ListRelasiCourseStudent &L, addressRelasiCourseStudent &P) {
+    if (first(L) == NULL) {
         cout << "List Kosong" << endl;
-    } else if (next(first(L)) == NULL){
+    } else if (next(first(L)) == NULL) {
         P = first(L);
         first(L) = NULL;
         last(L) = NULL;
     } else {
-        addressLastRelasiCourseStudent Q;
+        addressRelasiCourseStudent Q;
         P = first(L);
-        while (P != NULL){
+        while (next(P) != NULL) {
             Q = P;
             P = next(P);
         }
         next(Q) = NULL;
-        last(L) = Q; 
+        last(L) = Q;
     }
 }
 
-void deleteAfterRelasiCourseStudent(ListRelasiCourseStudent &L, addressRelasiCourseStudent Prec, addressRelasiCourseStudent &P){
-    if (first(L) == NULL){
+void deleteAfterRelasiCourseStudent(ListRelasiCourseStudent &L, addressRelasiCourseStudent Prec, addressRelasiCourseStudent &P) {
+    if (first(L) == NULL) {
         cout << "List Kosong" << endl;
-    } else if (next(first(L)) == NULL){
+    } else if (next(first(L)) == NULL) {
         P = first(L);
         first(L) = NULL;
     } else {
@@ -80,14 +81,14 @@ void deleteAfterRelasiCourseStudent(ListRelasiCourseStudent &L, addressRelasiCou
     }
 }
 
-addressRelasiCourseStudent alokasiRelasiCourseStudent(addressCourse P, addressStudent Q){
-    addressRelasiCourseStudent P = new elmlistRelasiCourseStudent;
-    parent(L) = P;
-    child(L) = Q;
-    next(P) = NULL;
-    return P;
+addressRelasiCourseStudent alokasiRelasiCourseStudent(addressCourse course, addressStudent student) {
+    addressRelasiCourseStudent PRelasi = new elmlistRelasiCourseStudent;
+    parent(PRelasi) = course;
+    child(PRelasi) = student;
+    next(PRelasi) = NULL;
+    return PRelasi;
 }
 
-void dealokasiRelasiCourseStudent(addressRelasiCourseStudent &P){
-    delete (P);
+void dealokasiRelasiCourseStudent(addressRelasiCourseStudent &P) {
+    delete P;
 }
