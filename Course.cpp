@@ -1,76 +1,90 @@
 #include "Course.h"
 
-void createListCourse(ListCourse &L){
+void createListCourse(ListCourse &L) {
     first(L) = NULL;
     last(L) = NULL;
 }
 
-void insertFirstCourse(ListCourse &L, addressCourse P){
-    if (first(L) == NULL){
+addressCourse alokasiCourse(infotypeCourse x) {
+    addressCourse P = new elmlistCourse;
+    info(P) = x;
+    next(P) = NULL;
+    relasiStudent(P) = NULL;
+    relasiLecturer(P) = NULL;
+    return P;
+}
+
+void dealokasiCourse(addressCourse &P) {
+    delete P;
+}
+
+void insertFirstCourse(ListCourse &L, addressCourse P) {
+    if (first(L) == NULL) {
         first(L) = P;
+        last(L) = P;
     } else {
         next(P) = first(L);
         first(L) = P;
     }
 }
 
-void insertLastCourse(ListCourse &L, addressCourse P){
-    if (fisrt(L) == NULL){
-        first(L) == P;
+void insertLastCourse(ListCourse &L, addressCourse P) {
+    if (first(L) == NULL) {
+        first(L) = P;
+        last(L) = P;
     } else {
         next(last(L)) = P;
         last(L) = P;
     }
 }
 
-void insertAfterCourse(ListCourse &L, addressCourse Prec, addressCourse P){
-    if (first(L) == NULL){
+void insertAfterCourse(ListCourse &L, addressCourse Prec, addressCourse P) {
+    if (first(L) == NULL) {
         first(L) = P;
+        last(L) = P;
     } else {
         next(P) = next(Prec);
         next(Prec) = P;
-    }        
+    }
 }
 
-void deleteFirstCourse(ListCourse &L, addressCourse &P){
-    if (first(L) == NULL){
+void deleteFirstCourse(ListCourse &L, addressCourse &P) {
+    if (first(L) == NULL) {
         cout << "List Kosong" << endl;
-    } else if (next(first(L)) == NULL){
-        P = first(L);
-        first(L) = NULL;
-        last(L) = NULL;
     } else {
         P = first(L);
-        first(L) = next(P);
+        if (first(L) == last(L)) {
+            first(L) = NULL;
+            last(L) = NULL;
+        } else {
+            first(L) = next(P);
+        }
         next(P) = NULL;
     }
 }
 
-void deleteLastCourse(ListCourse &L, addressCourse &P){
-    if (first(L) == NULL){
+void deleteLastCourse(ListCourse &L, addressCourse &P) {
+    if (first(L) == NULL) {
         cout << "List Kosong" << endl;
-    } else if (next(first(L)) == NULL){
-        P = first(L);
-        first(L) = NULL;
-        last(L) = NULL;
     } else {
-        addressLastCourse Q;
         P = first(L);
-        while (P != NULL){
-            Q = P;
+        if (first(L) == last(L)) {
+            first(L) = NULL;
+            last(L) = NULL;
+        } else {
+            while (next(P) != last(L)) {
+                P = next(P);
+            }
+            next(P) = NULL;
+            last(L) = P;
             P = next(P);
         }
-        next(Q) = NULL;
-        last(L) = Q; 
     }
 }
 
-void deleteAfterCourse(ListCourse &L, addressCourse Prec, addressCourse &P){
-    if (first(L) == NULL){
+void deleteAfterCourse(ListCourse &L, addressCourse Prec, addressCourse &P) {
+    if (first(L) == NULL) {
         cout << "List Kosong" << endl;
-    } else if (next(first(L)) == NULL){
-        P = first(L);
-        first(L) = NULL;
     } else {
         P = next(Prec);
         next(Prec) = next(P);
@@ -78,41 +92,37 @@ void deleteAfterCourse(ListCourse &L, addressCourse Prec, addressCourse &P){
     }
 }
 
-addressCourse alokasiCourse(infotypeCourse x){
-    addressCourse P = new elmlistCourse;
-    info(P) = x;
-    next(P) = NULL;
-    return P;
-}
-
-void dealokasiCourse(addressCourse &P){
-    delete (P);
-}
-
-addressCourse findElmCourse(ListCourse L, string x){
+addressCourse findElmCourse(ListCourse L, string kode) {
     addressCourse P = first(L);
-
-    do{
-        if (info(P).kode == x){
+    while (P != NULL) {
+        if (info(P).kode == kode) {
             return P;
         }
         P = next(P);
-    }(while P != NULL);
+    }
+    return NULL;
 }
 
-void printInfoCourse(ListCourse L){
+void printInfoCourse(ListCourse L) {
     addressCourse P = first(L);
+    while (P != NULL) {
+        // Print information of Course
+        cout << "Nama: " << info(P).nama << endl;
+        cout << "Kode: " << info(P).kode << endl;
+        cout << "Tugas: " << info(P).tugas << endl;
 
-    cout << "-----------------------------------" << endl;
-    if (P == NULL){
-        cout << "List Kosong" << endl;
-    } else {
-        do{
-            cout << "Nama Mata Kuliah: " <<  info(P).nama << endl;
-            cout << "Kode Mata Kuliah: " <<  info(P).kode << endl;
-            cout << endl;
-            P = next(P);
-        }(while P != NULL);
+        // Print information of Quiz
+        for (int i = 0; i < info(P).nQuiz; ++i) {
+            cout << "Quiz " << i + 1 << " - Pertanyaan: " << info(P).quiz[i].pertanyaan << endl;
+            cout << "Quiz " << i + 1 << " - Jawaban: " << info(P).quiz[i].jawaban << endl;
+            cout << "Quiz " << i + 1 << " - Point: " << info(P).quiz[i].point << endl;
+        }
+
+        // Print information of Forum
+        for (int i = 0; i < info(P).nForum; ++i) {
+            cout << "Forum " << i + 1 << ": " << info(P).forum[i] << endl;
+        }
+
+        P = next(P);
     }
-    cout << "-----------------------------------" << endl;
 }
