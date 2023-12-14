@@ -25,7 +25,14 @@ void insertLastCourse(ListCourse &L, addressCourse P){
     }
 }
 
-void insertAfterCourse(addressCourse Prec, addressCourse P);
+void insertAfterCourse(ListCourse &L, addressCourse Prec, addressCourse P){
+    if (first(L) == NULL){
+        first(L) = P;
+    } else {
+        next(P) = next(Prec);
+        next(Prec) = P;
+    }        
+}
 void deleteFirstCourse(ListCourse &L, addressCourse &P);
 void deleteLastCourse(ListCourse &L, addressCourse &P);
 void deleteAfterCourse(addressCourse Prec, addressCourse &P);
