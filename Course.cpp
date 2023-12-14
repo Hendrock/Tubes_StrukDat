@@ -1,14 +1,15 @@
 #include "Course.h"
 
 void createListCourse(ListCourse &L){
-    first(L) = NULL;    
+    first(L) = NULL;
+    last(L) = NULL;
 }
 
 void insertFirstCourse(ListCourse &L, addressCourse P){
     if (first(L) == NULL){
         first(L) = P;
     } else {
-        next(P) = first(L)
+        next(P) = first(L);
         first(L) = P;
     }
 }
@@ -17,11 +18,8 @@ void insertLastCourse(ListCourse &L, addressCourse P){
     if (fisrt(L) == NULL){
         first(L) == P;
     } else {
-        addressCourse Q = first(L);
-        while (Q != NULL){
-            Q = next(Q);
-        }
-        next(Q) = P;
+        next(last(L)) = P;
+        last(L) = P;
     }
 }
 
@@ -37,9 +35,10 @@ void insertAfterCourse(ListCourse &L, addressCourse Prec, addressCourse P){
 void deleteFirstCourse(ListCourse &L, addressCourse &P){
     if (first(L) == NULL){
         cout << "List Kosong" << endl;
-    } else  if (next(first(L)) == NULL){
+    } else if (next(first(L)) == NULL){
         P = first(L);
         first(L) = NULL;
+        last(L) = NULL;
     } else {
         P = first(L);
         first(L) = next(P);
@@ -50,9 +49,10 @@ void deleteFirstCourse(ListCourse &L, addressCourse &P){
 void deleteLastCourse(ListCourse &L, addressCourse &P){
     if (first(L) == NULL){
         cout << "List Kosong" << endl;
-    } else  if (next(first(L)) == NULL){
+    } else if (next(first(L)) == NULL){
         P = first(L);
         first(L) = NULL;
+        last(L) = NULL;
     } else {
         addressLastCourse Q;
         P = first(L);
@@ -61,13 +61,14 @@ void deleteLastCourse(ListCourse &L, addressCourse &P){
             P = next(P);
         }
         next(Q) = NULL;
+        last(L) = Q; 
     }
 }
 
 void deleteAfterCourse(ListCourse &L, addressCourse Prec, addressCourse &P){
     if (first(L) == NULL){
         cout << "List Kosong" << endl;
-    } else  if (next(first(L)) == NULL){
+    } else if (next(first(L)) == NULL){
         P = first(L);
         first(L) = NULL;
     } else {
