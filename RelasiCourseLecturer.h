@@ -10,20 +10,20 @@
 using namespace std;
 
 #define next(P) P->next
-#define child(P) P->child
-#define parent(P) P->parent
+#define child(P) P->lecturer
+#define parent(P) P->course
 #define first(L) L.first
 #define last(L) L.last
 
 typedef struct elmlistRelasiCourseLecturer *addressRelasiCourseLecturer;
 
-struct elmlistRelasiCourseLecturer{
+struct elmlistRelasiCourseLecturer {
     addressRelasiCourseLecturer next;
-    addressCourse parent;
-    addressLecturer child;
+    addressCourse course;
+    addressLecturer lecturer;
 };
 
-struct ListRelasiCourseLecturer{
+struct ListRelasiCourseLecturer {
     addressRelasiCourseLecturer first, last;
 };
 
@@ -35,9 +35,7 @@ void deleteFirstRelasiCourseLecturer(ListRelasiCourseLecturer &L, addressRelasiC
 void deleteLastRelasiCourseLecturer(ListRelasiCourseLecturer &L, addressRelasiCourseLecturer &P);
 void deleteAfterRelasiCourseLecturer(ListRelasiCourseLecturer &L, addressRelasiCourseLecturer Prec, addressRelasiCourseLecturer &P);
 
-addressRelasiCourseLecturer alokasi(addressCourse P, addressLecturer C);
-void dealokasi(addressRelasiCourseLecturer &P);
-addressRelasiCourseLecturer findElm(ListRelasiCourseLecturer L, addressCourse P, addressLecturer C);
-void printInfo(ListRelasiCourseLecturer L);
+addressRelasiCourseLecturer alokasiRelasiCourseLecturer(addressCourse course, addressLecturer lecturer);
+void dealokasiRelasiCourseLecturer(addressRelasiCourseLecturer &P);
 
 #endif // RELASICOURSELECTURER_H_INCLUDED
