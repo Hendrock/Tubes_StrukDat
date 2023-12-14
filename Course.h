@@ -40,18 +40,18 @@ struct ListCourse{
     addressCourse first, last;
 };
 
-void createList(ListCourse &L);
-void insertFirst(ListCourse &L, addressCourse P);
-void insertLast(ListCourse &L, addressCourse P);
-void insertAfter(addressCourse Prec, addressCourse P);
-void deleteFirst(ListCourse &L, addressCourse &P);
-void deleteLast(ListCourse &L, addressCourse &P);
-void deleteAfter(addressCourse Prec, addressCourse &P);
+void createListCourse(ListCourse &L);
+void insertFirstCourse(ListCourse &L, addressCourse P);
+void insertLastCourse(ListCourse &L, addressCourse P);
+void insertAfterCourse(addressCourse Prec, addressCourse P);
+void deleteFirstCourse(ListCourse &L, addressCourse &P);
+void deleteLastCourse(ListCourse &L, addressCourse &P);
+void deleteAfterCourse(addressCourse Prec, addressCourse &P);
 
-addressCourse alokasi(infotypeCourse x);
-void dealokasi(addressCourse &P);
-addressCourse findElm(ListCourse L, infotypeCourse x);
-void printInfo(ListCourse L);
+addressCourse alokasiCourse(infotypeCourse x);
+void dealokasiCourse(addressCourse &P);
+addressCourse findElmCourse(ListCourse L, infotypeCourse x);
+void printInfoCourse(ListCourse L);
 
 
 #endif // COURSE_H_INCLUDED
