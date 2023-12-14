@@ -4,6 +4,11 @@
 #include "Lecturer.h"
 #include "Course.h"
 
+#include <iostream>
+#include <string>
+
+using namespace std;
+
 #define next(P) P->next
 #define child(P) P->child
 #define parent(P) P->parent
