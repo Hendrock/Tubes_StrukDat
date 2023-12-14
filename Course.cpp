@@ -1,5 +1,35 @@
 #include "Course.h"
 
+void createListCourse(ListCourse &L){
+    first(L) = NULL;    
+}
+
+void insertFirstCourse(ListCourse &L, addressCourse P){
+    if (first(L) == NULL){
+        first(L) = P;
+    } else {
+        next(P) = first(L)
+        first(L) = P;
+    }
+}
+
+void insertLastCourse(ListCourse &L, addressCourse P){
+    if (fisrt(L) == NULL){
+        first(L) == P;
+    } else {
+        addressCourse Q = first(L);
+        while (Q != NULL){
+            Q = next(Q);
+        }
+        next(Q) = P;
+    }
+}
+
+void insertAfterCourse(addressCourse Prec, addressCourse P);
+void deleteFirstCourse(ListCourse &L, addressCourse &P);
+void deleteLastCourse(ListCourse &L, addressCourse &P);
+void deleteAfterCourse(addressCourse Prec, addressCourse &P);
+
 addressCourse alokasiCourse(infotypeCourse x){
     addressCourse P = new elmlistCourse;
     info(P) = x;
