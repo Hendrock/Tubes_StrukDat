@@ -6,36 +6,47 @@
 
 using namespace std;
 
-#define nextCourse(P) P->nextCourse
+#define next(P) P->next
+#define info(P) P->info
 #define first(L) L.first
 #define last(L) L.last
-#define info(P) P->info
+#define relasiStudent(P) P->relasiStudentList
+#define relasiLecturer(P) P->relasiLecturerList
 
 const int NMAX = 50;
 
-typedef struct Course infotypeCourse;
-typedef struct elmlistCourse *addressCourse;
-
-struct soalQuiz{
+struct soalQuiz {
     string pertanyaan, jawaban;
     int point;
 };
 
-struct Course{
+struct nilaiQuiz {
+    string NIM;
+    int quizScore;
+};
+
+struct Course {
     string nama, kode, tugas;
-    string[NMAX] forum;
-    soalQuiz[NMAX] quiz;
-    int nQuiz, nForum;
+    string forum[NMAX];
+    soalQuiz quiz[NMAX];
+    nilaiQuiz nilai[NMAX];
+    int nQuiz, nForum, nStudent;
 };
 
-struct elmlistCourse{
-    infotypeCourse infoCourse;
-    addressCourse nextCourse;
-    addressLecturer adrLecturer;
-    addressStudent adrStudent;
+typedef struct Course infotypeCourse;
+typedef struct elmlistCourse *addressCourse;
+
+struct ListRelasiCourseStudent;
+struct ListRelasiCourseLecturer;
+
+struct elmlistCourse {
+    infotypeCourse info;
+    addressCourse next;
+    ListRelasiCourseStudent* relasiStudentList;
+    ListRelasiCourseLecturer* relasiLecturerList;
 };
 
-struct ListCourse{
+struct ListCourse {
     addressCourse first, last;
 };
 
@@ -49,8 +60,7 @@ void deleteAfterCourse(ListCourse &L, addressCourse Prec, addressCourse &P);
 
 addressCourse alokasiCourse(infotypeCourse x);
 void dealokasiCourse(addressCourse &P);
-addressCourse findElmCourse(ListCourse L, infotypeCourse x);
+addressCourse findElmCourse(ListCourse L, string kode);
 void printInfoCourse(ListCourse L);
-
 
 #endif // COURSE_H_INCLUDED
