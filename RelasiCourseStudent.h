@@ -10,20 +10,20 @@
 using namespace std;
 
 #define next(P) P->next
-#define child(P) P->child
-#define parent(P) P->parent
+#define child(P) P->student
+#define parent(P) P->course
 #define first(L) L.first
 #define last(L) L.last
 
 typedef struct elmlistRelasiCourseStudent *addressRelasiCourseStudent;
 
-struct elmlistRelasiCourseStudent{
+struct elmlistRelasiCourseStudent {
     addressRelasiCourseStudent next;
-    addressCourse parent;
-    addressStudent child;
+    addressCourse course;
+    addressStudent student;
 };
 
-struct ListRelasiCourseStudent{
+struct ListRelasiCourseStudent {
     addressRelasiCourseStudent first, last;
 };
 
@@ -35,9 +35,7 @@ void deleteFirstRelasiCourseStudent(ListRelasiCourseStudent &L, addressRelasiCou
 void deleteLastRelasiCourseStudent(ListRelasiCourseStudent &L, addressRelasiCourseStudent &P);
 void deleteAfterRelasiCourseStudent(ListRelasiCourseStudent &L, addressRelasiCourseStudent Prec, addressRelasiCourseStudent &P);
 
-addressRelasiCourseStudent alokasi(addressCourse P, addressStudent C);
-void dealokasi(addressRelasiCourseStudent &P);
-addressRelasiCourseStudent findElm(ListRelasiCourseStudent L, addressCourse P, addressStudent C);
-void printInfo(ListRelasiCourseStudent L);
+addressRelasiCourseStudent alokasiRelasiCourseStudent(addressCourse course, addressStudent student);
+void dealokasiRelasiCourseStudent(addressRelasiCourseStudent &P);
 
 #endif // RELASICOURSESTUDENT_H_INCLUDED
