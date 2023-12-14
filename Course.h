@@ -6,7 +6,7 @@
 
 using namespace std;
 
-#define next(P) P->next
+#define nextCourse(P) P->nextCourse
 #define first(L) L.first
 #define last(L) L.last
 #define info(P) P->info
@@ -29,11 +29,10 @@ struct Course{
 };
 
 struct elmlistCourse{
-    infotypeCourse info;
-    addressCourse next;
-    addressQuiz adrQuiz;
-    addressForum adrForum;
-    addressTugas adrTugas;
+    infotypeCourse infoCourse;
+    addressCourse nextCourse;
+    addressLecturer adrLecturer;
+    addressStudent adrStudent;
 };
 
 struct ListCourse{
