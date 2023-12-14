@@ -1,6 +1,11 @@
 #ifndef RELASICOURSESTUDENT_H_INCLUDED
 #define RELASICOURSESTUDENT_H_INCLUDED
 
+#include <iostream>
+#include <string>
+
+using namespace std;
+
 #include "Student.h"
 #include "Course.h"
 
