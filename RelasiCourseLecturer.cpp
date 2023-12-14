@@ -1,11 +1,11 @@
-#include "RelasiCourseStudent.h"
+#include "RelasiCourseLecturer.h"
 
-void createListRelasiCourseStudent(ListRelasiCourseStudent &L){
+void createListRelasiCourseLecturer(ListRelasiCourseLecturer &L){
     first(L) = NULL;
     last(L) = NULL;
 }
 
-void insertFirstRelasiCourseStudent(ListRelasiCourseStudent &L, addressRelasiCourseStudent P){
+void insertFirstRelasiCourseLecturer(ListRelasiCourseLecturer &L, addressRelasiCourseLecturer P){
     if (first(L) == NULL){
         first(L) = P;
     } else {
@@ -14,7 +14,7 @@ void insertFirstRelasiCourseStudent(ListRelasiCourseStudent &L, addressRelasiCou
     }
 }
 
-void insertLastRelasiCourseStudent(ListRelasiCourseStudent &L, addressRelasiCourseStudent P){
+void insertLastRelasiCourseLecturer(ListRelasiCourseLecturer &L, addressRelasiCourseLecturer P){
     if (fisrt(L) == NULL){
         first(L) == P;
     } else {
@@ -23,7 +23,7 @@ void insertLastRelasiCourseStudent(ListRelasiCourseStudent &L, addressRelasiCour
     }
 }
 
-void insertAfterRelasiCourseStudent(ListRelasiCourseStudent &L, addressRelasiCourseStudent Prec, addressRelasiCourseStudent P){
+void insertAfterRelasiCourseLecturer(ListRelasiCourseLecturer &L, addressRelasiCourseLecturer Prec, addressRelasiCourseLecturer P){
     if (first(L) == NULL){
         first(L) = P;
     } else {
@@ -32,7 +32,7 @@ void insertAfterRelasiCourseStudent(ListRelasiCourseStudent &L, addressRelasiCou
     }        
 }
 
-void deleteFirstRelasiCourseStudent(ListRelasiCourseStudent &L, addressRelasiCourseStudent &P){
+void deleteFirstRelasiCourseLecturer(ListRelasiCourseLecturer &L, addressRelasiCourseLecturer &P){
     if (first(L) == NULL){
         cout << "List Kosong" << endl;
     } else if (next(first(L)) == NULL){
@@ -46,7 +46,7 @@ void deleteFirstRelasiCourseStudent(ListRelasiCourseStudent &L, addressRelasiCou
     }
 }
 
-void deleteLastRelasiCourseStudent(ListRelasiCourseStudent &L, addressRelasiCourseStudent &P){
+void deleteLastRelasiCourseLecturer(ListRelasiCourseLecturer &L, addressRelasiCourseLecturer &P){
     if (first(L) == NULL){
         cout << "List Kosong" << endl;
     } else if (next(first(L)) == NULL){
@@ -54,7 +54,7 @@ void deleteLastRelasiCourseStudent(ListRelasiCourseStudent &L, addressRelasiCour
         first(L) = NULL;
         last(L) = NULL;
     } else {
-        addressLastRelasiCourseStudent Q;
+        addressLastRelasiCourseLecturer Q;
         P = first(L);
         while (P != NULL){
             Q = P;
@@ -65,7 +65,7 @@ void deleteLastRelasiCourseStudent(ListRelasiCourseStudent &L, addressRelasiCour
     }
 }
 
-void deleteAfterRelasiCourseStudent(ListRelasiCourseStudent &L, addressRelasiCourseStudent Prec, addressRelasiCourseStudent &P){
+void deleteAfterRelasiCourseLecturer(ListRelasiCourseLecturer &L, addressRelasiCourseLecturer Prec, addressRelasiCourseLecturer &P){
     if (first(L) == NULL){
         cout << "List Kosong" << endl;
     } else if (next(first(L)) == NULL){
@@ -78,19 +78,19 @@ void deleteAfterRelasiCourseStudent(ListRelasiCourseStudent &L, addressRelasiCou
     }
 }
 
-addressRelasiCourseStudent alokasiRelasiCourseStudent(infotypeRelasiCourseStudent x){
-    addressRelasiCourseStudent P = new elmlistRelasiCourseStudent;
+addressRelasiCourseLecturer alokasiRelasiCourseLecturer(infotypeRelasiCourseLecturer x){
+    addressRelasiCourseLecturer P = new elmlistRelasiCourseLecturer;
     info(P) = x;
     next(P) = NULL;
     return P;
 }
 
-void dealokasiRelasiCourseStudent(addressRelasiCourseStudent &P){
+void dealokasiRelasiCourseLecturer(addressRelasiCourseLecturer &P){
     delete (P);
 }
 
-addressRelasiCourseStudent findElmRelasiCourseStudent(ListRelasiCourseStudent L, string x){
-    addressRelasiCourseStudent P = first(L);
+addressRelasiCourseLecturer findElmRelasiCourseLecturer(ListRelasiCourseLecturer L, string x){
+    addressRelasiCourseLecturer P = first(L);
 
     do{
         if (info(P).kode == x){
@@ -100,8 +100,8 @@ addressRelasiCourseStudent findElmRelasiCourseStudent(ListRelasiCourseStudent L,
     }(while P != NULL);
 }
 
-void printInfoRelasiCourseStudent(ListRelasiCourseStudent L){
-    addressRelasiCourseStudent P = first(L);
+void printInfoRelasiCourseLecturer(ListRelasiCourseLecturer L){
+    addressRelasiCourseLecturer P = first(L);
 
     cout << "-----------------------------------" << endl;
     if (P == NULL){
