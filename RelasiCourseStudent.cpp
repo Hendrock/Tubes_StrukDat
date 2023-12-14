@@ -1,4 +1,6 @@
 #include "RelasiCourseStudent.h"
+#include "Course.h"
+#include "Student.h"
 
 void createListRelasiCourseStudent(ListRelasiCourseStudent &L){
     first(L) = NULL;
@@ -78,41 +80,14 @@ void deleteAfterRelasiCourseStudent(ListRelasiCourseStudent &L, addressRelasiCou
     }
 }
 
-addressRelasiCourseStudent alokasiRelasiCourseStudent(infotypeRelasiCourseStudent x){
+addressRelasiCourseStudent alokasiRelasiCourseStudent(addressCourse P, addressStudent Q){
     addressRelasiCourseStudent P = new elmlistRelasiCourseStudent;
-    info(P) = x;
+    parent(L) = P;
+    child(L) = Q;
     next(P) = NULL;
     return P;
 }
 
 void dealokasiRelasiCourseStudent(addressRelasiCourseStudent &P){
     delete (P);
-}
-
-addressRelasiCourseStudent findElmRelasiCourseStudent(ListRelasiCourseStudent L, string x){
-    addressRelasiCourseStudent P = first(L);
-
-    do{
-        if (info(P).kode == x){
-            return P;
-        }
-        P = next(P);
-    }(while P != NULL);
-}
-
-void printInfoRelasiCourseStudent(ListRelasiCourseStudent L){
-    addressRelasiCourseStudent P = first(L);
-
-    cout << "-----------------------------------" << endl;
-    if (P == NULL){
-        cout << "List Kosong" << endl;
-    } else {
-        do{
-            cout << "Nama Mata Kuliah: " <<  info(P).nama << endl;
-            cout << "Kode Mata Kuliah: " <<  info(P).kode << endl;
-            cout << endl;
-            P = next(P);
-        }(while P != NULL);
-    }
-    cout << "-----------------------------------" << endl;
 }
