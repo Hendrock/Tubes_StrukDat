@@ -7,38 +7,37 @@
 using namespace std;
 
 #define next(P) P->next
+#define info(P) P->info
 #define first(L) L.first
 #define last(L) L.last
-#define info(P) P->info
 
 typedef struct Lecturer infotypeLecturer;
 typedef struct elmlistLecturer *addressLecturer;
 
-struct Lecturer{
+struct Lecturer {
     string nama, kode, email, password;
 };
 
-struct elmlistLecturer{
+struct elmlistLecturer {
     infotypeLecturer info;
     addressLecturer next;
 };
 
-struct ListLecturer{
+struct ListLecturer {
     addressLecturer first, last;
 };
 
-void createList(ListLecturer &L);
-void insertFirst(ListLecturer &L, addressLecturer P);
-void insertLast(ListLecturer &L, addressLecturer P);
-void insertAfter(addressLecturer Prec, addressLecturer P);
-void deleteFirst(ListLecturer &L, addressLecturer &P);
-void deleteLast(ListLecturer &L, addressLecturer &P);
-void deleteAfter(addressLecturer Prec, addressLecturer &P);
+void createListLecturer(ListLecturer &L);
+void insertFirstLecturer(ListLecturer &L, addressLecturer P);
+void insertLastLecturer(ListLecturer &L, addressLecturer P);
+void insertAfterLecturer(ListLecturer &L,addressLecturer Prec, addressLecturer P);
+void deleteFirstLecturer(ListLecturer &L, addressLecturer &P);
+void deleteLastLecturer(ListLecturer &L, addressLecturer &P);
+void deleteAfterLecturer(ListLecturer &L,addressLecturer Prec, addressLecturer &P);
 
-addressLecturer alokasi(infotypeLecturer x);
-void dealokasi(addressLecturer &P);
-addressLecturer findElm(ListLecturer L, infotypeLecturer x);
-void printInfo(ListLecturer L);
-
+addressLecturer alokasiLecturer(infotypeLecturer x);
+void dealokasiLecturer(addressLecturer &P);
+addressLecturer findElmLecturer(ListLecturer L, string kode);
+void printInfoLecturer(ListLecturer L);
 
 #endif // LECTURER_H_INCLUDED
