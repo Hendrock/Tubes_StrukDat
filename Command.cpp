@@ -6,23 +6,36 @@ void jawabQuiz(ListCourse L){
 
 }
 
-void addQuiz(ListCourse &L){
-    string tempKode, tempSoal, tempJawaban;
-    int tempPoint;
+void addQuiz(ListCourse &L, bool permission){
+    if (!permission){
+        cout << "Anda tidak dapat menggunakan fitur ini" << endl; 
+    } else {
+        string tempKode;
+        
+        cout << "Kelas yang ingin ditambahkan Quiz";
+        cin >> tempKode;
 
-    cin >> tempKode;
-    addressCourse P = findElm(L, tempKode);
+        addressCourse P = findElmCourse(L, tempKode);
 
-    int index = info(P).nQuiz;
+        if (P == NULL){
+            cout << "Kelas tidak ditemukan" << endl;
+        } else {
+            string tempSoal, tempJawaban;
+            int tempPoint, index = info(P).nQuiz;
 
-    cin >> tempSoal;
-    info(P).quiz[index].pertanyaan = tempSoal;
+            cout << "Masukkan Pertanyaan" << endl;
+            cin >> tempSoal;
+            info(P).quiz[index].pertanyaan = tempSoal;
 
-    cin >> tempJawaban;
-    info(P).quiz[index].jawaban = tempJawaban;
+            cout << "Masukkan Jawaban" << endl;
+            cin >> tempJawaban;
+            info(P).quiz[index].jawaban = tempJawaban;
 
-    cin >> tempPoint;
-    info(P).quiz[index].point = tempPoint;
+            cout << "Masukkan Poin" << endl;
+            cin >> tempPoint;
+            info(P).quiz[index].point = tempPoint;
+        }
+    }
 }
 
 void showQuiz(List)
