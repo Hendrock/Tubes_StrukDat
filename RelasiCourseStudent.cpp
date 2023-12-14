@@ -7,8 +7,8 @@ void createListRelasiCourseStudent(ListRelasiCourseStudent &L) {
 
 addressRelasiCourseStudent alokasiRelasiCourseStudent(addressCourse course, addressStudent student) {
     addressRelasiCourseStudent P = new elmlistRelasiCourseStudent;
-    course(P) = course;
-    student(P) = student;
+    parent(P) = course;
+    child(P) = student;
     next(P) = NULL;
     return P;
 }
