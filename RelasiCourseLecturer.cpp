@@ -1,4 +1,6 @@
 #include "RelasiCourseLecturer.h"
+#include "Course.h"
+#include "Lecturer.h"
 
 void createListRelasiCourseLecturer(ListRelasiCourseLecturer &L){
     first(L) = NULL;
@@ -78,41 +80,14 @@ void deleteAfterRelasiCourseLecturer(ListRelasiCourseLecturer &L, addressRelasiC
     }
 }
 
-addressRelasiCourseLecturer alokasiRelasiCourseLecturer(infotypeRelasiCourseLecturer x){
+addressRelasiCourseLecturer alokasiRelasiCourseLecturer(addressCourse P, addressLecturer Q){
     addressRelasiCourseLecturer P = new elmlistRelasiCourseLecturer;
-    info(P) = x;
+    parent(L) = P;
+    child(L) = Q;
     next(P) = NULL;
     return P;
 }
 
 void dealokasiRelasiCourseLecturer(addressRelasiCourseLecturer &P){
     delete (P);
-}
-
-addressRelasiCourseLecturer findElmRelasiCourseLecturer(ListRelasiCourseLecturer L, string x){
-    addressRelasiCourseLecturer P = first(L);
-
-    do{
-        if (info(P).kode == x){
-            return P;
-        }
-        P = next(P);
-    }(while P != NULL);
-}
-
-void printInfoRelasiCourseLecturer(ListRelasiCourseLecturer L){
-    addressRelasiCourseLecturer P = first(L);
-
-    cout << "-----------------------------------" << endl;
-    if (P == NULL){
-        cout << "List Kosong" << endl;
-    } else {
-        do{
-            cout << "Nama Mata Kuliah: " <<  info(P).nama << endl;
-            cout << "Kode Mata Kuliah: " <<  info(P).kode << endl;
-            cout << endl;
-            P = next(P);
-        }(while P != NULL);
-    }
-    cout << "-----------------------------------" << endl;
 }
