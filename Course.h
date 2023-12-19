@@ -33,7 +33,7 @@ struct Course {
     int nQuiz, nForum, nStudent;
 };
 
-typedef struct Course infotypeCourse;
+typedef struct string infotypeCourse;
 typedef struct elmlistCourse *addressCourse;
 
 struct ListRelasiCourseStudent;

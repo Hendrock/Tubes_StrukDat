@@ -2,6 +2,8 @@
 #include "Lecturer.h"
 #include "Course.h"
 
+void add
+
 void sortStudentScore(ListCourse LC, bool permission){
     if (!permission){
         cout << "Anda tidak dapat menggunakan fitur ini" << endl; 
@@ -24,27 +26,7 @@ void sortStudentScore(ListCourse LC, bool permission){
             for (int i = 0; i < NMAX-1; i++){
 		        int index = i;
                 for (int j = i+1; j < NMAX; j++){
-                    if (choice == "A"){
-                        if (info(P).menjawab[j].score < info(P).menjawab[idx].score
-                    }
-                }
-		switch opt {
-		case 0: // Ascending
-			for j := i + 1; j < NMAX; j++ {
-				if (*T)[j].Kategori == category && (*T)[j].Stok < (*T)[idx].Stok {
-					idx = j
-				}
-			}
-		case 1: // Descending
-			for j := i + 1; j < NMAX; j++ {
-				if (*T)[j].Kategori == category && (*T)[j].Stok > (*T)[idx].Stok {
-					idx = j
-				}
-			}
-		}
-
-		(*T)[i], (*T)[idx] = (*T)[idx], (*T)[i]
-	}
+                    
             }
         }
     }

@@ -11,7 +11,7 @@ using namespace std;
 #define first(L) L.first
 #define last(L) L.last
 
-typedef struct Student infotypeStudent;
+typedef struct string infotypeStudent;
 typedef struct elmlistStudent *addressStudent;
 
 struct Student{
