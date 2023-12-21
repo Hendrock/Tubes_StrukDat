@@ -10,7 +10,8 @@ Course (SLL)
 - Lecturer (CSLL)
 
 ## TODO LIST:
-- lengkapi dan implementasi primitif
-- implementasi CRUD
+- ~~lengkapi dan implementasi primitif~~
+- ~~implementasi CRUD~~
 - implementasi UI
+- insert data awal
 - tldr SEMUANYA 😭😭😭
