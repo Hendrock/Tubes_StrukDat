@@ -1,5 +1,4 @@
 #include "Course.h"
-#include "RelasiUser.h"
 
 void createListCourse(ListCourse &L) {
     first(L) = NULL;
@@ -10,7 +9,7 @@ addressCourse alokasiCourse(infotypeCourse x) {
     addressCourse P = new elmlistCourse;
     info(P) = x;
     next(P) = NULL;
-    relasiUser(P) = NULL;
+    createListRelasiUser(relasiUser(P));
     return P;
 }
 
@@ -105,25 +104,29 @@ addressCourse findElmCourse(ListCourse L, string kode) {
 
 void printInfoCourse(ListCourse L) {
     addressCourse P = first(L);
-    while (P != NULL) {
-        // Print information of Course
-        cout << "Nama: " << info(P).nama << endl;
-        cout << "Kode: " << info(P).kode << endl;
-        cout << "Tugas: " << info(P).tugas << endl;
+    if (P != NULL){
+        while (P != NULL) {
+            // Print information of Course
+            cout << "Nama: " << info(P).nama << endl;
+            cout << "Kode: " << info(P).kode << endl;
+            cout << "Tugas: " << info(P).tugas << endl;
 
-        // Print information of Quiz
-        for (int i = 0; i < info(P).nQuiz; ++i) {
-            cout << "Quiz " << i + 1 << " - Pertanyaan: " << info(P).quiz[i].pertanyaan << endl;
-            cout << "Quiz " << i + 1 << " - Jawaban: " << info(P).quiz[i].jawaban << endl;
-            cout << "Quiz " << i + 1 << " - Point: " << info(P).quiz[i].point << endl;
+    //        // Print information of Quiz
+    //        for (int i = 0; i < info(P).nQuiz; ++i) {
+    //            cout << "Quiz " << i + 1 << " - Pertanyaan: " << info(P).quiz[i].pertanyaan << endl;
+    //            cout << "Quiz " << i + 1 << " - Jawaban: " << info(P).quiz[i].jawaban << endl;
+    //            cout << "Quiz " << i + 1 << " - Point: " << info(P).quiz[i].point << endl;
+    //        }
+    //
+    //        // Print information of Forum
+    //        for (int i = 0; i < info(P).nForum; ++i) {
+    //            cout << "Forum " << i + 1 << ": " << info(P).forum[i] << endl;
+    //        }
+
+            P = next(P);
         }
-
-        // Print information of Forum
-        for (int i = 0; i < info(P).nForum; ++i) {
-            cout << "Forum " << i + 1 << ": " << info(P).forum[i] << endl;
-        }
-
-        P = next(P);
+    } else {
+        cout << "kosong" << endl;
     }
 }
 
@@ -131,10 +134,9 @@ void printUser(ListCourse L, string kode) {
     addressCourse P = first(L);
     while (P != NULL) {
         if (info(P).kode == kode) {
-            ListRelasiUser* LU = relasiUser(P);
-            addressRelasiUser Q = first(LU);
+            addressRelasiUser Q = first(relasiUser(P));
             while (Q != NULL) {
-                cout << info(Q) << endl;
+                cout << info(user(Q)).nama << endl;
                 Q = next(Q);
             }
         }

@@ -1,10 +1,11 @@
 # depslib dependency file v1.0
-1702955493 source:c:\users\hendrik\desktop\code bois\sturktur\testa\course.cpp
+1703136038 source:c:\users\hendrik\desktop\code bois\sturktur\testa\course.cpp
 	"Course.h"
 
-1703131015 c:\users\hendrik\desktop\code bois\sturktur\testa\course.h
+1703134759 c:\users\hendrik\desktop\code bois\sturktur\testa\course.h
 	<iostream>
 	<string>
+	"relasiUser.h"
 
 1702955418 source:c:\users\hendrik\desktop\code bois\sturktur\testa\user.cpp
 	"User.h"
@@ -16,13 +17,15 @@
 1703086021 source:c:\users\hendrik\desktop\code bois\sturktur\testa\relasiuser.cpp
 	"RelasiUser.h"
 
-1702956615 c:\users\hendrik\desktop\code bois\sturktur\testa\relasiuser.h
+1703135697 c:\users\hendrik\desktop\code bois\sturktur\testa\relasiuser.h
 	"User.h"
-	"Course.h"
 	<iostream>
 	<string>
 
-1702956428 source:c:\users\hendrik\desktop\code bois\sturktur\testa\main.cpp
+1703135998 source:c:\users\hendrik\desktop\code bois\sturktur\testa\main.cpp
+	<iostream>
+	<cstdlib>
+	<ctime>
 	"Course.h"
 	"User.h"
 	"RelasiUser.h"

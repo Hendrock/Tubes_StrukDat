@@ -2,7 +2,6 @@
 #define RELASIUSER_H_INCLUDED
 
 #include "User.h"
-#include "Course.h"
 
 #include <iostream>
 #include <string>
@@ -15,6 +14,8 @@ using namespace std;
 #define last(L) L.last
 
 typedef struct elmlistRelasiUser *addressRelasiUser;
+
+struct Course;
 
 struct elmlistRelasiUser {
     addressRelasiUser next;

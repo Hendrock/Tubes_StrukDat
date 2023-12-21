@@ -4,6 +4,8 @@
 #include <iostream>
 #include <string>
 
+#include "relasiUser.h"
+
 using namespace std;
 
 #define next(P) P->next
@@ -26,21 +28,19 @@ struct nilaiQuiz {
 
 struct Course {
     string nama, kode, tugas;
-    string forum[NMAX];
-    soalQuiz quiz[NMAX];
-    nilaiQuiz nilai[NMAX];
-    int nQuiz, nForum, nUser;
+//    string forum[NMAX];
+//    soalQuiz quiz[NMAX];
+//    nilaiQuiz nilai[NMAX];
+//    int nQuiz, nForum, nUser;
 };
 
 typedef struct Course infotypeCourse;
 typedef struct elmlistCourse *addressCourse;
 
-struct ListRelasiUser;
-
 struct elmlistCourse {
     infotypeCourse info;
     addressCourse next;
-    ListRelasiUser* relasiUserList;
+    ListRelasiUser relasiUserList;
 };
 
 struct ListCourse {

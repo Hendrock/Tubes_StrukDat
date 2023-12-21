@@ -1,4 +1,3 @@
-#include <iostream>
 #include <cstdlib>
 #include <ctime>
 
@@ -33,15 +32,15 @@ Course generateRandomCourse() {
     Course newCourse;
     newCourse.nama = generateRandomString(8);
     newCourse.kode = generateRandomString(5);
-    newCourse.tugas = generateRandomString(10);
-    newCourse.nQuiz = 3; // Assuming 3 quizzes for each course for the example
-
-    // Generating random quiz information
-    for (int i = 0; i < newCourse.nQuiz; ++i) {
-        newCourse.quiz[i].pertanyaan = "Pertanyaan " + to_string(i + 1);
-        newCourse.quiz[i].jawaban = "Jawaban " + to_string(i + 1);
-        newCourse.quiz[i].point = rand() % 11; // Random point between 0 and 10
-    }
+//    newCourse.tugas = generateRandomString(10);
+//    newCourse.nQuiz = 3; // Assuming 3 quizzes for each course for the example
+//
+//    // Generating random quiz information
+//    for (int i = 0; i < newCourse.nQuiz; ++i) {
+//        newCourse.quiz[i].pertanyaan = "Pertanyaan " + to_string(i + 1);
+//        newCourse.quiz[i].jawaban = "Jawaban " + to_string(i + 1);
+//        newCourse.quiz[i].point = rand() % 11; // Random point between 0 and 10
+//    }
 
     return newCourse;
 }
@@ -52,49 +51,77 @@ int main() {
     // Create lists for courses, users, and user-course relationships
     ListCourse courses;
     ListUser users;
-    ListRelasiUser userCourseRelationships;
 
     // Initialize the lists
     createListCourse(courses);
     createListUser(users);
-    createListRelasiUser(userCourseRelationships);
 
-    // Generate and insert 10 courses
-    for (int i = 0; i < 10; ++i) {
-        Course newCourse = generateRandomCourse();
-        addressCourse courseAddress = alokasiCourse(newCourse);
-        insertLastCourse(courses, courseAddress);
-    }
-
-    // Generate and insert 20 users
-    for (int i = 0; i < 20; ++i) {
-        User newUser = generateRandomUser();
-        addressUser userAddress = alokasiUser(newUser);
-        insertLastUser(users, userAddress);
-    }
-
-    // Establish relationships between users and courses
-    for (addressUser user = first(users); user != NULL; user = next(user)) {
-        for (addressCourse course = first(courses); course != NULL; course = next(course)) {
-            // Assuming a random chance for a user to be related to a course
-            if (rand() % 2 == 0) {
-                addressRelasiUser relationship = alokasiRelasiUser(user);
-                insertLastRelasiUser(userCourseRelationships, relationship);
-                relasiUser(course) = &userCourseRelationships;
-            }
-        }
-    }
-
-    // Print information
-    cout << "Courses:" << endl;
+    infotypeCourse tempCourse;
+    tempCourse.kode = "APPPP";
+    tempCourse.nama = "Test";
+    tempCourse.tugas = "P";
+    addressCourse tempC = alokasiCourse(tempCourse);
+    insertLastCourse(courses, tempC);
     printInfoCourse(courses);
 
-    cout << "\nUsers:" << endl;
+    infotypeUser tempUser;
+    tempUser.nama = "aA";
+    tempUser.password = "PP";
+    tempUser.role = "mhs";
+    tempUser.UID = "123123";
+    addressUser tempU = alokasiUser(tempUser);
+    insertLastUser(users, tempU);
     printInfoUser(users);
 
-    cout << "\nUser-Course Relationships:" << endl;
-    // Assuming you have a function to print relationships, modify accordingly
-    // printRelationships(userCourseRelationships);
+    insertLastRelasiUser(relasiUser(tempC), alokasiRelasiUser(tempU));
+
+    printUser(courses, "APPPP");
+
+    addressCourse buang;
+    deleteFirstCourse(courses, buang);
+    printInfoCourse(courses);
+
+    printInfoUser(users);
+
+//    // Generate and insert 10 courses
+//    for (int i = 0; i < 10; ++i) {
+//        Course newCourse = generateRandomCourse();
+//        addressCourse courseAddress = alokasiCourse(newCourse);
+//        insertLastCourse(courses, courseAddress);
+//    }
+//
+//    printInfoCourse(courses);
+//
+//    // Generate and insert 20 users
+//    for (int i = 0; i < 20; ++i) {
+//        User newUser = generateRandomUser();
+//        addressUser userAddress = alokasiUser(newUser);
+//        insertLastUser(users, userAddress);
+//    }
+//
+//    printInfoUser(users);
+
+
+
+//    // Establish relationships between users and courses
+//    for (addressUser user = first(users); user != NULL; user = next(user)) {
+//        for (addressCourse course = first(courses); course != NULL; course = next(course)) {
+//            // Assuming a random chance for a user to be related to a course
+//            addressRelasiUser relationship = alokasiRelasiUser(user);
+//            insertLastRelasiUser(relasiUser(course), relationship);
+//
+//            cout << info(first(courses)).nama << endl;
+//            cout << info(first(relasiUser(courses))).nama << endl;
+//        }
+//    }
+
+
+//    // Print information
+//    cout << "Courses:" << endl;
+//
+//
+//    cout << "\nUsers:" << endl;
+//    printInfoUser(users);
 
     return 0;
 }
