@@ -14,4 +14,4 @@ Course (SLL)
 - ~~implementasi CRUD~~
 - implementasi UI
 - insert data awal
-- tldr SEMUANYA 😭😭😭
+- ~~tldr SEMUANYA 😭😭😭~~
