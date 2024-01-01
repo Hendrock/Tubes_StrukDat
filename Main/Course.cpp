@@ -145,8 +145,8 @@ void printForum(ListCourse L, string code){
     cout << "==================================================";
     if (info(P).nForum != 0){
         for (int i = 0; i < info(P).nForum; i++){
-            printf("\n[ID. %d] %s", info(P).nForum, info(P).forum[i].title);
-            printf("\n\t&s", info(P).forum[i].body);
+            printf("\n[ID. %d] %s", info(P).nForum, info(P).forum[i].title.c_str());
+            printf("\n\t%s", info(P).forum[i].body.c_str());
         }
     } else {
         cout << "Tidak ada content di forum ini.";
@@ -160,11 +160,11 @@ void addForum(ListCourse L, string code){
     printForum(L, code);
 
     if (info(P).nForum != 0){
-        cout << "Judul Forum: "
+        cout << "Judul Forum: ";
         cin >> info(P).forum[info(P).nForum].title;
         cout << "Isi Forum:" << endl;
         getline(cin, info(P).forum[info(P).nForum].body);
-        cout >> "Berhasil!" << endl;
+        cout << "Berhasil!" << endl;
 
         info(P).nForum++;
 
@@ -207,7 +207,7 @@ void printQuiz(ListCourse L, string code){
     if (info(P).nQuiz != 0){
         for (int i = 0; i < info(P).nQuiz; i++){
             printf("\n[No. %d] %d", info(P).nQuiz, info(P).quiz[i].point);
-            printf("\n\t&s", info(P).forum[i].question);
+            printf("\n\t%s", info(P).quiz[i].question.c_str());
         }
     } else {
         cout << "Tidak ada content di quiz ini.";
@@ -227,7 +227,7 @@ void addQuiz(ListCourse &L, string code){
         getline(cin, info(P).quiz[info(P).nQuiz].answer);
         cout << "Poin:" << endl;
         cin >> info(P).quiz[info(P).nQuiz].point;
-        cout >> "Berhasil!" << endl;
+        cout << "Berhasil!" << endl;
 
         info(P).nQuiz++;
 
@@ -251,7 +251,7 @@ void deleteQuiz(ListCourse &L, string code){
             printf("Soal nomor %d diluar indeks.\n", ID);
         } else {
             for (int i = ID - 1; i < info(P).nQuiz - 1; i++) {
-                info(P).Quiz[i] = info(P).Quiz[i + 1];
+                info(P).quiz[i] = info(P).quiz[i + 1];
             }
 
             info(P).nQuiz--;
@@ -303,10 +303,8 @@ void editQuiz(ListCourse &L, string code){
             cout << "Perubahan berhasil!" << endl;
 
             printQuiz(L, code);
+        }
     }
 }
 
-
-void doQuiz(ListCourse &L, string code, string UID){
-
-}
+void doQuiz(ListCourse &L, string code, string UID){}
