@@ -9,9 +9,13 @@ Course (SLL)
 - Student (CSLL)
 - Lecturer (CSLL)
 
+## Ilustrasi:
+
+
 ## TODO LIST:
+- Buat ilustrasi multi-linked listnya
 - ~~lengkapi dan implementasi primitif~~
 - ~~implementasi CRUD~~
-- implementasi UI
+- implementasi UI 
 - insert data awal
 - ~~tldr SEMUANYA 😭😭😭~~
