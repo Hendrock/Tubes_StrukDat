@@ -73,7 +73,7 @@ void deleteForum(ListCourse &L, string code);
 void printQuiz(ListCourse L, string code);
 void addQuiz(ListCourse &L, string code);
 void deleteQuiz(ListCourse &L, string code);
-void editQuiz(ListCourse &L, string code)
+void editQuiz(ListCourse &L, string code);
 void doQuiz(ListCourse &L, string code, string UID);
 
 #endif // COURSE_H_INCLUDED
