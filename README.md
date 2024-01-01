@@ -6,8 +6,7 @@
 Course (SLL)
 
 ## Child List:
-- Student (CSLL)
-- Lecturer (CSLL)
+User (CSLL)
 
 ## Ilustrasi:
 
