@@ -37,7 +37,7 @@ void deleteAfterUser(ListUser &L, addressUser Prec, addressUser &P);
 
 addressUser alokasiUser(infotypeUser x);
 void dealokasiUser(addressUser &P);
-addressUser findElmUser(ListUser L, string nim);
+addressUser findElmUser(ListUser L, string UID);
 void printInfoUser(ListUser L);
 
 #endif // USER_H_INCLUDED

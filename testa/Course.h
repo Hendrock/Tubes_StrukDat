@@ -10,14 +10,18 @@ using namespace std;
 
 #define next(P) P->next
 #define info(P) P->info
+#define relasiUser(P) P->relasiUserList
 #define first(L) L.first
 #define last(L) L.last
-#define relasiUser(P) P->relasiUserList
 
 const int NMAX = 50;
 
-struct soalQuiz {
-    string pertanyaan, jawaban;
+struct elmForum {
+    string title, body;
+};
+
+struct elmQuiz {
+    string question, answer;
     int point;
 };
 
@@ -27,11 +31,11 @@ struct nilaiQuiz {
 };
 
 struct Course {
-    string nama, kode, tugas;
-//    string forum[NMAX];
-//    soalQuiz quiz[NMAX];
-//    nilaiQuiz nilai[NMAX];
-//    int nQuiz, nForum, nUser;
+    string name, code, task;
+    elmForum forum[NMAX];
+    elmQuiz quiz[NMAX];
+    nilaiQuiz nilai[NMAX];
+    int nQuiz, nForum, nUser;
 };
 
 typedef struct Course infotypeCourse;
@@ -58,8 +62,18 @@ void deleteAfterCourse(ListCourse &L, addressCourse Prec, addressCourse &P);
 addressCourse alokasiCourse(infotypeCourse x);
 void dealokasiCourse(addressCourse &P);
 addressCourse findElmCourse(ListCourse L, string kode);
-void printInfoCourse(ListCourse L);
 
-void printUser(ListCourse L, string kode);
+void printInfoCourse(ListCourse L);
+void printUser(ListCourse L, string code);
+
+void printForum(ListCourse L, string code);
+void addForum(ListCourse &L, string code);
+void deleteForum(ListCourse &L, string code);
+
+void printQuiz(ListCourse L, string code);
+void addQuiz(ListCourse &L, string code);
+void deleteQuiz(ListCourse &L, string code);
+void editQuiz(ListCourse &L, string code)
+void doQuiz(ListCourse &L, string code, string UID);
 
 #endif // COURSE_H_INCLUDED

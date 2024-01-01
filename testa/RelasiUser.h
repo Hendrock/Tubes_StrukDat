@@ -15,8 +15,6 @@ using namespace std;
 
 typedef struct elmlistRelasiUser *addressRelasiUser;
 
-struct Course;
-
 struct elmlistRelasiUser {
     addressRelasiUser next;
     addressUser User;

@@ -91,10 +91,10 @@ void deleteAfterCourse(ListCourse &L, addressCourse Prec, addressCourse &P) {
     }
 }
 
-addressCourse findElmCourse(ListCourse L, string kode) {
+addressCourse findElmCourse(ListCourse L, string code) {
     addressCourse P = first(L);
     while (P != NULL) {
-        if (info(P).kode == kode) {
+        if (info(P).code == code) {
             return P;
         }
         P = next(P);
@@ -107,9 +107,9 @@ void printInfoCourse(ListCourse L) {
     if (P != NULL){
         while (P != NULL) {
             // Print information of Course
-            cout << "Nama: " << info(P).nama << endl;
-            cout << "Kode: " << info(P).kode << endl;
-            cout << "Tugas: " << info(P).tugas << endl;
+            cout << "Nama: " << info(P).name << endl;
+            cout << "Kode: " << info(P).code << endl;
+            cout << "Tugas: " << info(P).task << endl;
 
     //        // Print information of Quiz
     //        for (int i = 0; i < info(P).nQuiz; ++i) {
@@ -130,16 +130,183 @@ void printInfoCourse(ListCourse L) {
     }
 }
 
-void printUser(ListCourse L, string kode) {
-    addressCourse P = first(L);
-    while (P != NULL) {
-        if (info(P).kode == kode) {
-            addressRelasiUser Q = first(relasiUser(P));
-            while (Q != NULL) {
-                cout << info(user(Q)).nama << endl;
-                Q = next(Q);
-            }
-        }
-        P = next(P);
+void printUser(ListCourse L, string code) {
+    addressCourse P = findElmCourse(L, code);
+    addressRelasiUser Q = first(relasiUser(P));
+    while (Q != NULL) {
+        cout << info(user(Q)).nama << endl;
+        Q = next(Q);
     }
+}
+
+void printForum(ListCourse L, string code){
+    addressCourse P = findElmCourse(L, code);
+
+    cout << "==================================================";
+    if (info(P).nForum != 0){
+        for (int i = 0; i < info(P).nForum; i++){
+            printf("\n[ID. %d] %s", info(P).nForum, info(P).forum[i].title);
+            printf("\n\t&s", info(P).forum[i].body);
+        }
+    } else {
+        cout << "Tidak ada content di forum ini.";
+    }
+    cout << endl << "==================================================" << endl;
+}
+
+void addForum(ListCourse L, string code){
+    addressCourse P = findElmCourse(L, code);
+
+    printForum(L, code);
+
+    if (info(P).nForum != 0){
+        cout << "Judul Forum: "
+        cin >> info(P).forum[info(P).nForum].title;
+        cout << "Isi Forum:" << endl;
+        getline(cin, info(P).forum[info(P).nForum].body);
+        cout >> "Berhasil!" << endl;
+
+        info(P).nForum++;
+
+        cout << "Penambahan berhasil!" << endl;
+
+        printForum(L, code);
+    }
+}
+
+void deleteForum(ListCourse &L, string code){
+    addressCourse P = findElmCourse(L, code);
+    int ID;
+
+    printForum(L, code);
+
+    if (info(P).nForum != 0){
+        cout << "ID forum yang ingin dihapus: ";
+        cin >> ID;
+
+        if (ID < 0 || ID >= info(P).nForum){
+            printf("ID forum %d diluar indeks.\n", ID);
+        } else {
+            for (int i = ID; i < info(P).nForum - 1; i++) {
+                info(P).forum[i] = info(P).forum[i + 1];
+            }
+
+            info(P).nForum--;
+
+            cout << "Penghapusan berhasil!" << endl;
+
+            printForum(L, code);
+        }
+    }
+}
+
+void printQuiz(ListCourse L, string code){
+    addressCourse P = findElmCourse(L, code);
+
+    cout << "==================================================";
+    if (info(P).nQuiz != 0){
+        for (int i = 0; i < info(P).nQuiz; i++){
+            printf("\n[No. %d] %d", info(P).nQuiz, info(P).quiz[i].point);
+            printf("\n\t&s", info(P).forum[i].question);
+        }
+    } else {
+        cout << "Tidak ada content di quiz ini.";
+    }
+    cout << endl << "==================================================" << endl;
+}
+
+void addQuiz(ListCourse &L, string code){
+    addressCourse P = findElmCourse(L, code);
+
+    printQuiz(L, code);
+
+    if (info(P).nQuiz != 0){
+        cout << "Pertanyaan:" << endl;
+        getline(cin, info(P).quiz[info(P).nQuiz].question);
+        cout << "Jawaban:" << endl;
+        getline(cin, info(P).quiz[info(P).nQuiz].answer);
+        cout << "Poin:" << endl;
+        cin >> info(P).quiz[info(P).nQuiz].point;
+        cout >> "Berhasil!" << endl;
+
+        info(P).nQuiz++;
+
+        cout << "Penambahan berhasil!" << endl;
+
+        printForum(L, code);
+    }
+}
+
+void deleteQuiz(ListCourse &L, string code){
+    addressCourse P = findElmCourse(L, code);
+    int ID;
+
+    printQuiz(L, code);
+
+    if (info(P).nQuiz != 0){
+        cout << "Nomor soal yang ingin dihapus: ";
+        cin >> ID;
+
+        if (ID - 1 < 0 || ID - 1 >= info(P).nForum){
+            printf("Soal nomor %d diluar indeks.\n", ID);
+        } else {
+            for (int i = ID - 1; i < info(P).nQuiz - 1; i++) {
+                info(P).Quiz[i] = info(P).Quiz[i + 1];
+            }
+
+            info(P).nQuiz--;
+
+            cout << "Penghapusan berhasil!" << endl;
+
+            printQuiz(L, code);
+        }
+
+    }
+}
+
+void editQuiz(ListCourse &L, string code){
+    addressCourse P = findElmCourse(L, code);
+    int ID, choice;
+
+    printQuiz(L, code);
+
+    if (info(P).nQuiz != 0){
+        cout << "Nomor soal yang ingin diubah: ";
+        cin >> ID;
+
+        if (ID - 1 < 0 || ID - 1 >= info(P).nForum){
+            printf("Soal nomor %d diluar indeks.\n", ID);
+        } else {
+            cout << "Pilih elemen yang ingin diubah:" << endl;
+            cout << "\t[1] Pertanyaan Soal" << endl;
+            cout << "\t[2] Jawaban Soal" << endl;
+            cout << "\t[3] Poin Soal" << endl;
+            cin >> choice;
+
+            switch (choice) {
+                case 1:
+                    cout << "Pertanyaan Soal: ";
+                    cin.ignore();
+                    getline(cin, info(P).quiz[ID - 1].question);
+                case 2:
+                    cout << "Jawaban Soal: ";
+                    cin.ignore();
+                    getline(cin, info(P).quiz[ID - 1].answer);
+                case 3:
+                    cout << "Poin Soal: ";
+                    cin >> info(P).quiz[ID - 1].point;
+                default:
+                    cout << "Pilihan tidak valid." << endl;
+                    return;
+            }
+
+            cout << "Perubahan berhasil!" << endl;
+
+            printQuiz(L, code);
+    }
+}
+
+
+void doQuiz(ListCourse &L, string code, string UID){
+
 }
