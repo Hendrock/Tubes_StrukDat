@@ -15,7 +15,7 @@ typedef struct User infotypeUser;
 typedef struct elmlistUser *addressUser;
 
 struct User{
-    string nama, UID, password, role;
+    string name, UID, password, role;
 };
 
 struct elmlistUser{
@@ -38,6 +38,8 @@ void deleteAfterUser(ListUser &L, addressUser Prec, addressUser &P);
 addressUser alokasiUser(infotypeUser x);
 void dealokasiUser(addressUser &P);
 addressUser findElmUser(ListUser L, string UID);
-void printInfoUser(ListUser L);
+
+void printAllUsers(ListUser L);
+void printUser(ListUser L, string UID);
 
 #endif // USER_H_INCLUDED

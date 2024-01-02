@@ -111,18 +111,25 @@ addressUser findElmUser(ListUser L, string UID) {
     return NULL;
 }
 
-void printInfoUser(ListUser L) {
-    cout << "-----------------------------------" << endl;
-    if (first(L) != NULL) {
-        addressUser P = first(L);
+void printAllUsers(ListUser L){
+    addressUser P = first(L);
+
+    if (P != NULL){
         do {
-            cout << "Nama: " << info(P).nama << endl;
-            cout << "NIM: " << info(P).UID << endl;
-            cout << endl;
+            printf("%s (User ID: %s)\n", info(P).name.c_str(), info(P).UID.c_str());
             P = next(P);
         } while (P != first(L));
     } else {
-        cout << "List Kosong" << endl;
+        cout << "List kosong." << endl;
     }
-    cout << "-----------------------------------" << endl;
+}
+
+void printUser(ListUser L, string UID){
+    addressUser P = findElmUser(L, UID);
+
+    if (P != NULL){
+        printf("%s (User ID: %s)\n", info(P).name.c_str(), info(P).UID.c_str());
+    } else {
+        printf("User %s tidak ditemukan.\n", UID.c_str());
+    }
 }

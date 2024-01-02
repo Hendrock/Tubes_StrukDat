@@ -9,7 +9,7 @@
 using namespace std;
 
 #define next(P) P->next
-#define user(P) P->User
+#define user(P) P->user
 #define first(L) L.first
 #define last(L) L.last
 
@@ -17,7 +17,7 @@ typedef struct elmlistRelasiUser *addressRelasiUser;
 
 struct elmlistRelasiUser {
     addressRelasiUser next;
-    addressUser User;
+    addressUser user;
 };
 
 struct ListRelasiUser {
