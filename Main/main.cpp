@@ -119,197 +119,218 @@ int main() {
     insertLastUser(users, tempU7);
     insertLastRelasiUser(relasiUser(tempC2), alokasiRelasiUser(tempU7));
 
-    cout << "=================================================" << endl;
-    cout << "================== MENU =========================" << endl;
-    cout << "=================================================" << endl;
-
-    cout << "1. USER " << endl;
-    cout << "2. DASHBOARD " << endl;
-    cout << "MASUKAN PILIHAN MENU : ";
-    cin >> n;
-
-    if (n == 1) {
+    do {
         cout << "=================================================" << endl;
         cout << "================== MENU =========================" << endl;
         cout << "=================================================" << endl;
-        cout << "1. REGISTER " << endl;
-        cout << "2. LOGIN " << endl;
-        cout << "3. HOME " << endl;
+
+        cout << "1. USER " << endl;
+        cout << "2. DASHBOARD " << endl;
+        cout << "3. EXIT " << endl;
         cout << "MASUKAN PILIHAN MENU : ";
-        cin >> x;
+        cin >> n;
 
-        if (x == 1) {
-            cout << "=====List Mata Kuliah====" << endl;
-            printAllCourses(courses);
+        if (n == 1) {
+            do {
+                cout << "=================================================" << endl;
+                cout << "================== USER MENU ====================" << endl;
+                cout << "=================================================" << endl;
+                cout << "1. REGISTER " << endl;
+                cout << "2. LOGIN " << endl;
+                cout << "3. BACK TO MAIN MENU " << endl;
+                cout << "MASUKAN PILIHAN MENU : ";
+                cin >> x;
 
-            cout << "=== Registrasi ===" << endl;
-            cout << "Masukan name ";
-            cin >> name;
-            tempUser.name = name;
-            cout << "Masukan Password ";
-            cin >> pass;
-            tempUser.password = pass;
-            cout << "Masukan Role(Pilihan : Mhs/Dsn) ";
-            cin >> Role;
-            tempUser.role = Role;
-            cout << "Masukan ID ";
-            cin >> id;
-            tempUser.UID = id;
-            cout << "Masukan course : ";
-            cin >> code;
-            tempC = findElmCourse(courses, code);
-            addressUser tempU = alokasiUser(tempUser);
-            insertLastUser(users, tempU);
-            insertLastRelasiUser(relasiUser(tempC), alokasiRelasiUser(tempU));
-            printAllUsers(users);
-            cout << "AKUN TEREGISTRASI" << endl;
-        } else if (x == 2) {
-            cout << "Masukan ID ";
-            cin >> id;
-            cout << "Masukan Password ";
-            cin >> pass;
-            if (findElmUser(users, id) != NULL) {
-                cout << "Akun telah login" << endl;
-            } else {
-                cout << "Akun belum terdaftar" << endl;
-            }
-        } else if (x == 3) {
-            cout << "=================================================" << endl;
-            cout << "================== MENU =========================" << endl;
-            cout << "=================================================" << endl;
+                if (x == 1) {
+                	 cout << "=====List Mata Kuliah====" << endl;
+            		 printAllCourses(courses);
 
-            cout << "1. USER " << endl;
-            cout << "2. DASHBOARD " << endl;
-            cout << "MASUKAN PILIHAN MENU : ";
-            cin >> n;
-        }
-    } else if (n == 2) {
-        cout << "=================================================" << endl;
-        cout << "================== DASHBOARD ====================" << endl;
-        cout << "=================================================" << endl;
-        cout << "1. Course " << endl;
-        cout << "2. HOME " << endl;
-        cout << "MASUKAN PILIHAN MENU : ";
-        cin >> x;
+            	  	 cout << "=== Registrasi ===" << endl;
+                     cout << "Masukan name ";
+                     cin >> name;
+                     tempUser.name = name;
+                     cout << "Masukan Password ";
+                     cin >> pass;
+            		 tempUser.password = pass;
+            		 cout << "Masukan Role(Pilihan : Mhs/Dsn) ";
+            		 cin >> Role;
+            		 tempUser.role = Role;
+            		 cout << "Masukan ID ";
+                     cin >> id;
+                     tempUser.UID = id;
+                     cout << "Masukan course : ";
+                     cin >> code;
 
-        if (x == 1) {
-            cout << "=================================================" << endl;
-            cout << "================== COURSE ========================" << endl;
-            cout << "=================================================" << endl;
-            printAllCourses(courses);
-            cout << " Masukan Kode Courses :";
-            cin >> code;
-            tempC = findElmCourse(courses, code);
-            tempCourse = info(tempC);
-            cout << "=================================================" << endl;
-            cout << "================== COURSE ========================" << endl;
-            cout << "=================================================" << endl;
-            cout << "1. Deskripsi Course  " << endl;
-            cout << "2. User Menu " << endl;
-            cout << "3. Home " << endl;
-            cout << "MASUKAN PILIHAN MENU : ";
-            cin >> n;
-
-            if (n == 1) {
-                // Nanti diisi fungsi descCourse
-            } else if (n == 2) {
-                cout << "Masukan UID : ";
-                cin >> id;
-                tempU = findElmUser(users, id);
-                tempUser = info(tempU);
-
-                if (tempUser.role == "Mahasiswa") {
-                    cout << "=================================================" << endl;
-                    cout << "============== COURSE MAHASISWA =================" << endl;
-                    cout << "=================================================" << endl;
-                    cout << "1. Lihat Forum " << endl;
-                    cout << "2. Kerjakan Quiz" << endl;
-                    cout << "3. Nilai Quiz" << endl;
-                    cout << "4. Lihat Tubes" << endl;
-                    cout << "5. Back" << endl;
-                    cout << "MASUKAN PILIHAN MENU : ";
-                    cin >> x;
-
-                    if (x == 1) {
-                        printForum(courses, code);
-                    } else if (x == 2) {
-                        // DoQuiz
-                    } else if (x == 3) {
-                        printQuiz(courses, code);
-                    } else if (x == 4) {
-                        cout << tempCourse.task << endl;
-                    } else if (x == 5) {
-                        cout << "=================================================" << endl;
-                        cout << "================== COURSE ========================" << endl;
-                        cout << "=================================================" << endl;
-                        cout << "1. Deskripsi Course  " << endl;
-                        cout << "2. User Menu " << endl;
-                        cout << "3. Home " << endl;
-                        cout << "MASUKAN PILIHAN MENU : ";
-                        cin >> n;
-                    }
-                } else if (tempUser.role == "Dosen") {
-                    cout << "=================================================" << endl;
-                    cout << "============== COURSE DOSEN ======================" << endl;
-                    cout << "=================================================" << endl;
-                    cout << "1. Edit Forum " << endl;
-                    cout << "2. Edit Quiz" << endl;
-                    cout << "3. Edit Tugas" << endl;
-                    cout << "4. Back" << endl;
-                    cout << "MASUKAN PILIHAN MENU : ";
-                    cin >> x;
-
-                    if (x == 1) {
-                        cout << "=================================================" << endl;
-                        cout << "================== Edit Forum ====================" << endl;
-                        cout << "=================================================" << endl;
-                        cout << "1. Tambah Forum " << endl;
-                        cout << "2. Hapus Forum" << endl;
-                        cout << "MASUKAN PILIHAN MENU : ";
-                        cin >> n;
-
-                        if (n == 1) {
-                            // AddForum(courses, code);
-                        } else if (n == 2) {
-                            deleteForum(courses, code);
+            		 tempC = findElmCourse(courses, code);
+                     addressUser tempU = alokasiUser(tempUser);
+                     insertLastUser(users, tempU);
+            		 insertLastRelasiUser(relasiUser(tempC), alokasiRelasiUser(tempU));
+                     printAllUsers(users);
+            		 cout << "AKUN TEREGISTRASI" << endl;
+                } else if (x == 2) {
+                    	cout << "Masukan ID ";
+                        cin >> id;
+                        cout << "Masukan Password ";
+                        cin >> pass;
+                        if (findElmUser(users, id) != NULL) {
+                            cout << "Akun telah login" << endl;
+                        } else {
+                            cout << "Akun belum terdaftar" << endl;
                         }
-                    } else if (x == 2) {
-                        cout << "=================================================" << endl;
-                        cout << "================== Edit Quiz =====================" << endl;
-                        cout << "=================================================" << endl;
-                        cout << "1. Tambah Quiz " << endl;
-                        cout << "2. Hapus Quiz" << endl;
-                        cout << "2. Edit Quiz" << endl;
-                        cout << "MASUKAN PILIHAN MENU : ";
-                        cin >> n;
-
-                        if (n == 1) {
-                            addQuiz(courses, code);
-                        } else if (n == 2) {
-                            deleteQuiz(courses, code);
-                        } else if (n == 3) {
-                            editQuiz(courses, code);
-                        }
-                    } else if (x == 3) {
-                        cout << "Masukan Task Baru : ";
-                        cin >> Task;
-                        tempCourse.task = Task;
-                        cout << "Tugas Berhasil diubah!" << endl;
-                        printAllCourses(courses);
-                    } else if (x == 4) {
-                        cout << "=================================================" << endl;
-                        cout << "================== COURSE ========================" << endl;
-                        cout << "=================================================" << endl;
-                        cout << "1. Deskripsi Course  " << endl;
-                        cout << "2. User Menu " << endl;
-                        cout << "3. Home " << endl;
-                        cout << "MASUKAN PILIHAN MENU : ";
-                        cin >> n;
-                    }
                 }
-            }
-        }
-    }
 
-    return 0;
+            } while (x != 3);
+
+        } else if (n == 2) {
+            do {
+                cout << "=================================================" << endl;
+                cout << "================== DASHBOARD ====================" << endl;
+                cout << "=================================================" << endl;
+                cout << "1. Course " << endl;
+                cout << "2. BACK TO MAIN MENU " << endl;
+                cout << "MASUKAN PILIHAN MENU : ";
+                cin >> x;
+
+                if (x == 1) {
+                    do {
+                        cout << "=================================================" << endl;
+                        cout << "================== COURSE ========================" << endl;
+                        cout << "=================================================" << endl;
+                        printAllCourses(courses);
+            	        cout << " Masukan Kode Courses :";
+                        cin >> code;
+            	        tempC = findElmCourse(courses, code);
+                        tempCourse = info(tempC);
+                        cout << "1. Deskripsi Course  " << endl;
+                        cout << "2. User Menu " << endl;
+                        cout << "3. BACK TO DASHBOARD " << endl;
+                        cout << "MASUKAN PILIHAN MENU : ";
+                        cin >> n;
+
+                        if (n == 1) {
+                            do{
+                            cout << "=================================================" << endl;
+                            cout << "================== DESKRIPSI COURSE ========================" << endl;
+                            cout << "=================================================" << endl;
+                            cout << "1. Lihat Semua Course  " << endl;
+                            cout << "2. Lihat Course " << endl;
+                            cout << "3. Peserta " << endl;
+                            cout << "4. BACK TO COURSE " << endl;
+                            cout << "MASUKAN PILIHAN MENU : ";
+                            cin >> n;
+                            if(n == 1){
+                                printAllCourses(courses);
+                            }else if(n == 2){
+                                printCourse(courses,code);
+                            }else if(n == 3){
+                                printAllUsers(users);
+                            }
+                            }while(n!=4);
+                        } else if (n == 2) {
+                            do{
+                                cout << "=================================================" << endl;
+                                cout << "================== USER MENU ========================" << endl;
+                                cout << "=================================================" << endl;
+                                cout << "1. Mahasiswa  " << endl;
+                                cout << "2. Dosen " << endl;
+                                cout << "3. BACK TO COURSE " << endl;
+                                cout << "MASUKAN PILIHAN MENU : ";
+                                cin >> x;
+
+                                cout << "Verifikasi User" << endl;
+                                cout << "Masukan UID : ";
+                                cin >> id;
+                                tempU = findElmUser(users, id);
+                                tempUser = info(tempU);
+                            if (tempUser.role == "Mahasiswa" && n==1) {
+                                do{
+                                    cout << "=================================================" << endl;
+                                    cout << "============== COURSE MAHASISWA =================" << endl;
+                                    cout << "=================================================" << endl;
+                                    cout << "1. Lihat Forum " << endl;
+                                    cout << "2. Kerjakan Quiz" << endl;
+                                    cout << "3. Nilai Quiz" << endl;
+                                    cout << "4. Lihat Tubes" << endl;
+                                    cout << "5. Back To User Menu" << endl;
+                                    cout << "MASUKAN PILIHAN MENU : ";
+                                    cin >> x;
+
+                                    if (x == 1) {
+                                        printForum(courses, code);
+                                    } else if (x == 2) {
+                                        doQuiz(courses,code,id);
+                                    } else if (x == 3) {
+                                        printQuiz(courses, code);
+                                    } else if (x == 4) {
+                                        cout << tempCourse.task << endl;
+                                    }
+                                }while(x!=5);
+                            } else if (tempUser.role == "Dosen" && n==2) {
+                                do{
+                                     cout << "=================================================" << endl;
+                                     cout << "============== COURSE DOSEN ======================" << endl;
+                                     cout << "=================================================" << endl;
+                                     cout << "1. Edit Forum " << endl;
+                                     cout << "2. Edit Quiz" << endl;
+                                     cout << "3. Edit Tugas" << endl;
+                                     cout << "4. Back" << endl;
+                                     cout << "MASUKAN PILIHAN MENU : ";
+                                     cin >> x;
+
+                                     if (x == 1) {
+                                        do{
+                                             cout << "=================================================" << endl;
+                                             cout << "================== Edit Forum ====================" << endl;
+                                             cout << "=================================================" << endl;
+                                             cout << "1. Tambah Forum " << endl;
+                                             cout << "2. Tambah Forum " << endl;
+                                             cout << "3. Back" << endl;
+                                             cout << "MASUKAN PILIHAN MENU : ";
+                                             cin >> n;
+
+                                             if (n == 1) {
+                                                addForum(courses, code);
+                                             } else if (n == 2) {
+                                                deleteForum(courses, code);
+                                             }
+                                        }while(n!=3);
+                                    } else if (x == 2) {
+                                        do{
+                                            cout << "=================================================" << endl;
+                                            cout << "==================  Quiz =====================" << endl;
+                                            cout << "=================================================" << endl;
+                                            cout << "1. Tambah Quiz " << endl;
+                                            cout << "2. Hapus Quiz" << endl;
+                                            cout << "3. Edit Quiz" << endl;
+                                            cout << "4. Back" << endl;
+                                            cout << "MASUKAN PILIHAN MENU : ";
+                                            cin >> n;
+
+                                            if (n == 1) {
+                                                    addQuiz(courses, code);
+                                            } else if (n == 2) {
+                                                    deleteQuiz(courses, code);
+                                            } else if (n == 3) {
+                                                    editQuiz(courses, code);
+                                         }
+                                        }while(n!=4);
+                                    } else if (x == 3) {
+                                        cout << "Masukan Task Baru : ";
+                                        cin >> Task;
+                                        tempCourse.task = Task;
+                                        cout << "Tugas Berhasil diubah!" << endl;
+                                        printAllCourses(courses);
+                                    }
+                                }while(x!=4);
+                            }
+                   	 }while(n!=3);
+                }
+            }while(n!=3);
+        }
+    }while(x!=2);
+}
+
+} while (n != 3);
+
+return 0;
 }
