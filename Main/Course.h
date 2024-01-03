@@ -35,7 +35,7 @@ struct Course {
     elmForum forum[NMAX];
     elmQuiz quiz[NMAX];
     elmResult result[NMAX];
-    int nQuiz, nForum, nResult;
+    int nQuiz, nForum, nResult, nUser;
 };
 
 typedef struct Course infotypeCourse;
@@ -63,6 +63,9 @@ addressCourse alokasiCourse(infotypeCourse x);
 void dealokasiCourse(addressCourse &P);
 addressCourse findElmCourse(ListCourse L, string code);
 
+void enroll(ListCourse &L, string UID)
+
+void sortCourses(ListCourse &L);
 void printAllCourses(ListCourse L);
 void printCourse(ListCourse L, string code);
 void printUsersInCourse(ListCourse L, string code);
@@ -76,6 +79,9 @@ void addQuiz(ListCourse &L, string code);
 void deleteQuiz(ListCourse &L, string code);
 void editQuiz(ListCourse &L, string code);
 void doQuiz(ListCourse &L, string code, string UID);
+
+void sortResult(ListCourse &L, string code);
+void printResult(ListCourse L, string code);
 
 void editTask(ListCourse &L, string code);
 

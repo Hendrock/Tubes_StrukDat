@@ -91,6 +91,25 @@ void deleteAfterCourse(ListCourse &L, addressCourse Prec, addressCourse &P) {
     }
 }
 
+void sortCourses(ListCourse &L) {
+    addressCourse P, Q;
+    infotypeCourse temp;
+
+    if (first(L) != NULL) {
+        for (P = first(L); next(P) != NULL; P = next(P)) {
+            for (Q = next(P); Q != NULL; Q = next(Q)) {
+                if (info(P).nUser < info(Q).nUser) {
+                    temp = info(P);
+                    info(P) = info(Q);
+                    info(Q) = temp;
+                }
+            }
+        }
+    } else {
+        cout << "List courses kosong." << endl;
+    }
+}
+
 addressCourse findElmCourse(ListCourse L, string code) {
     addressCourse P = first(L);
     while (P != NULL) {
@@ -103,17 +122,18 @@ addressCourse findElmCourse(ListCourse L, string code) {
 }
 
 void printAllCourses(ListCourse L) {
+    sortCourses(L);
     addressCourse P = first(L);
 
     if (P != NULL){
             while (P != NULL) {
-            printf("%s (%s)\n", info(P).name.c_str(), info(P).code.c_str());
+            printf("%s (%s)\t- User: %d\n", info(P).name.c_str(), info(P).code.c_str(), info(P).nUser);
             printForum(L, info(P).code);
             cout << info(P).task << endl;
             P = next(P);
         }
     } else {
-        cout << "List kosong." << endl;
+        cout << "List courses kosong." << endl;
     }
 }
 
@@ -121,7 +141,7 @@ void printCourse(ListCourse L, string code){
     addressCourse P = findElmCourse(L, code);
 
     if (P != NULL){
-        printf("%s (%s)\n", info(P).name.c_str(), info(P).code.c_str());
+        printf("%s (%s)\t- User: %d\n", info(P).name.c_str(), info(P).code.c_str(), info(P).nUser);
         printForum(L, info(P).code);
         cout << info(P).task << endl;
     } else {
@@ -139,7 +159,7 @@ void printUsersInCourse(ListCourse L, string code) {
             Q = next(Q);
         }
     } else {
-        cout << "List kosong." << endl;
+        printf("Tidak ada user pada course %s.\n", code.c_str());
     }
 }
 
@@ -335,5 +355,60 @@ void doQuiz(ListCourse &L, string code, string UID){
     } else {
         printf("Course %s tidak ditemukan.\n", code.c_str());
     }
+}
+
+void sortResult(ListCourse &L, string code) {
+    addressCourse P = findElmCourse(L, code);
+
+    if (P != NULL) {
+        elmResult temp;
+
+        for (int i = 0; i < info(P).nResult - 1; i++) {
+            for (int j = 0; j < info(P).nResult - i - 1; j++) {
+                if (info(P).result[j].score < info(P).result[j + 1].score) {
+                    temp = info(P).result[j];
+                    info(P).result[j] = info(P).result[j + 1];
+                    info(P).result[j + 1] = temp;
+                }
+            }
+        }
+    } else {
+        printf("Course %s tidak ditemukan.\n", code.c_str());
+    }
+}
+
+void printResult(ListCourse L, string code) {
+    addressCourse P = findElmCourse(L, code);
+
+    if (P != NULL) {
+        if (info(P).nResult != 0) {
+            printf("Results for %s (%s):\n", info(P).name.c_str(), code.c_str());
+            printf("---------------------------------------\n");
+            printf("Rank\tUID\tScore\n");
+            printf("---------------------------------------\n");
+
+            for (int i = 0; i < info(P).nResult; i++) {
+                printf("%d\t%s\t%d\n", i + 1, info(P).result[i].UID.c_str(), info(P).result[i].score);
+            }
+
+            printf("---------------------------------------\n");
+        } else {
+            cout << "Tidak ada hasil nilai di quiz ini." << endl;
+        }
+        printf("Course %s tidak ditemukan.\n", code.c_str());
+    }
+}
+
+void editTask(ListCourse &L, string code){
+    addressCourse P = findElmCourse(L, code);
+
+    cout << info(P).task << endl;
+
+    cout << "Masukan Task Baru : ";
+    getline(cin, info(P).task);
+
+    cout << "Perubahan berhasil!" << endl;
+
+    printCourse(L, code);
 }
 
