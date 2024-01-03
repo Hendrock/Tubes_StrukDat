@@ -2,56 +2,47 @@
 <CodeBlocks_layout_file>
 	<FileVersion major="1" minor="0" />
 	<ActiveTarget name="Debug" />
-	<File name="RelasiUser.cpp" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="7" zoom_2="0">
+	<File name="User.h" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="141" topLine="57" />
+			<Cursor1 position="866" topLine="13" />
 		</Cursor>
 	</File>
-	<File name="main.cpp" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
+	<File name="Course.h" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="5" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="6058" topLine="86" />
+			<Cursor1 position="2103" topLine="29" />
+		</Cursor>
+	</File>
+	<File name="main.cpp" open="1" top="1" tabpos="1" split="0" active="1" splitpos="0" zoom_1="5" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1657" topLine="37" />
 		</Cursor>
 	</File>
 	<File name="RelasiUser.h" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="7" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="196" topLine="0" />
+			<Cursor1 position="972" topLine="12" />
 		</Cursor>
 	</File>
-	<File name="Course.h" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="8" zoom_2="0">
+	<File name="RelasiUser.cpp" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="7" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="2006" topLine="0" />
+			<Cursor1 position="141" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="User.h" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
+	<File name="Course.cpp" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="484" topLine="3" />
-		</Cursor>
-	</File>
-	<File name="Course.cpp" open="1" top="1" tabpos="2" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="9290" topLine="36" />
+			<Cursor1 position="2283" topLine="38" />
 		</Cursor>
 		<Folding>
 			<Collapse line="2" />
 			<Collapse line="15" />
-			<Collapse line="19" />
-			<Collapse line="29" />
 			<Collapse line="39" />
 			<Collapse line="49" />
 			<Collapse line="64" />
 			<Collapse line="83" />
-			<Collapse line="145" />
-			<Collapse line="158" />
-			<Collapse line="178" />
-			<Collapse line="204" />
-			<Collapse line="217" />
-			<Collapse line="239" />
-			<Collapse line="309" />
 		</Folding>
 	</File>
-	<File name="User.cpp" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="2" zoom_2="0">
+	<File name="User.cpp" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="2019" topLine="86" />
+			<Cursor1 position="2682" topLine="89" />
 		</Cursor>
 	</File>
 </CodeBlocks_layout_file>

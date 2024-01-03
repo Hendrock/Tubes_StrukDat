@@ -147,7 +147,7 @@ void printAllCourses(ListCourse L) {
 
     if (P != NULL){
             while (P != NULL) {
-            printf("%s (%s)\t- User: %d\n", info(P).name.c_str(), info(P).code.c_str(), info(P).nUser);
+            printf("%s (%s) - User: %d\n", info(P).name.c_str(), info(P).code.c_str(), info(P).nUser);
             printForum(L, info(P).code);
             printf("Task: %s\n", info(P).task.c_str());
             P = next(P);
@@ -161,7 +161,7 @@ void printCourse(ListCourse L, string code){
     addressCourse P = findElmCourse(L, code);
 
     if (P != NULL){
-        printf("%s (%s)\t- User: %d\n", info(P).name.c_str(), info(P).code.c_str(), info(P).nUser);
+        printf("%s (%s) - User: %d\n", info(P).name.c_str(), info(P).code.c_str(), info(P).nUser);
         printForum(L, info(P).code);
         printf("Task: %s\n", info(P).task.c_str());
     } else {
@@ -180,6 +180,23 @@ void printUsersInCourse(ListCourse L, string code) {
         }
     } else {
         printf("Tidak ada user pada course %s.\n", code.c_str());
+    }
+}
+
+void printEnrolledCourse(ListCourse L, string UID){
+    addressCourse P = first(L);
+
+    while (P != NULL){
+        addressRelasiUser Q = first(relasiUser(P));
+        while (Q != NULL){
+            if (info(user(Q)).UID == UID){
+                printf("%s (%s) - User: %d\n", info(P).name.c_str(), info(P).code.c_str(), info(P).nUser);
+                printForum(L, info(P).code);
+                printf("Task: %s\n", info(P).task.c_str());
+            }
+            Q = next(Q);
+        }
+        P = next(P);
     }
 }
 

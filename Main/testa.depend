@@ -37,7 +37,7 @@
 	"User.h"
 	"RelasiUser.h"
 
-1704301787 c:\users\hendrik\desktop\code bois\sturktur\main\course.h
+1704323588 c:\users\hendrik\desktop\code bois\sturktur\main\course.h
 	<iostream>
 	<string>
 	"relasiUser.h"
@@ -57,6 +57,6 @@
 1704302210 source:c:\users\hendrik\desktop\code bois\sturktur\main\user.cpp
 	"User.h"
 
-1704303586 source:c:\users\hendrik\desktop\code bois\sturktur\main\course.cpp
+1704323883 source:c:\users\hendrik\desktop\code bois\sturktur\main\course.cpp
 	"Course.h"
 

@@ -223,7 +223,8 @@ int main() {
                     cout << "================== DASHBOARD ====================" << endl;
                     cout << "=================================================" << endl;
                     cout << "=====ENROLLED COURSES=====" << endl;
-                    print;
+                    printEnrolledCourse(courses, id);
+
                     cout << "1. FORUM " << endl;
                     cout << "2. QUIZ " << endl;
                     cout << "3. BACK TO MAIN MENU " << endl;
@@ -266,43 +267,90 @@ int main() {
                     cin >> menu;
 
                     if (menu == 1) {
-                        cout << "===================================================" << endl;
-                        cout << "================== COURSES ========================" << endl;
-                        cout << "===================================================" << endl;
-                        cout << "1. ALL COURSES " << endl;
-                        cout << "2. ENROLLED COURSES " << endl;
-                        cout << "3. BACK TO DASHBOARD " << endl;
-                        cout << "Pilihan: ";
-                        cin >> menu;
+                        do {
+                            cout << "===================================================" << endl;
+                            cout << "================== COURSES ========================" << endl;
+                            cout << "===================================================" << endl;
+                            cout << "1. ALL COURSES " << endl;
+                            cout << "2. ENROLLED COURSES " << endl;
+                            cout << "3. BACK TO DASHBOARD " << endl;
+                            cout << "Pilihan: ";
+                            cin >> menu;
 
-                        if (menu == 1) {
-                            do {
-                                cout << "=====ALL COURSES=====" << endl;
-                                printAllCourses(courses);
+                            if (menu == 1) {
+                                do {
+                                    cout << "=====ALL COURSES=====" << endl;
+                                    printAllCourses(courses);
 
-                                cout << "1. ADD COURSE" << endl;
-                                cout << "2. DELETE COURSE" << endl;
-                                cout << "3. BACK TO COURSES" << endl;
-                                cout << "Pilihan: ";
-                                cin >> menu;
+                                    cout << "1. ADD COURSE" << endl;
+                                    cout << "2. DELETE COURSE" << endl;
+                                    cout << "3. BACK TO COURSES" << endl;
+                                    cout << "Pilihan: ";
+                                    cin >> menu;
 
-                                if (menu == 1) {
-                                    infotypeCourse dummyCourse;
-                                    cout << "Nama course: ";
-                                    cin.ignore();
-                                    getline(cin, dummyCourse.name);
-                                    cout << "Kode course: ";
-                                    cin >> dummyCourse.code;
-                                    insertLastCourse(courses, alokasiCourse(dummyCourse));
-                                } else if (menu == 2){
-                                    cout << "Kode course: ";
-                                    cin >> code;
-                                    deleteSpesificCourse(courses, code);
-                                }
-                            } while (menu != 3);
-                        } else if (menu == 2) {
-                            print;
-                        }
+                                    if (menu == 1) {
+                                        infotypeCourse dummyCourse;
+                                        cout << "Nama course: ";
+                                        cin.ignore();
+                                        getline(cin, dummyCourse.name);
+                                        cout << "Kode course: ";
+                                        cin >> dummyCourse.code;
+                                        insertLastCourse(courses, alokasiCourse(dummyCourse));
+                                    } else if (menu == 2){
+                                        cout << "Kode course: ";
+                                        cin >> code;
+                                        deleteSpesificCourse(courses, code);
+                                    }
+                                } while (menu != 3);
+                            } else if (menu == 2) {
+                                do {
+                                    cout << "=====ENROLLED COURSES=====" << endl;
+                                    printEnrolledCourse(courses, id);;
+
+                                    cout << "1. DELETE FORUM" << endl;
+                                    cout << "2. ADD QUIZ" << endl;
+                                    cout << "3. DELETE QUIZ" << endl;
+                                    cout << "4. EDIT QUIZ" << endl;
+                                    cout << "5. QUIZ RESULT" << endl;
+                                    cout << "6. EDIT TASK" << endl;
+                                    cout << "7. BACK TO COURSES" << endl;
+                                    cout << "Pilihan: ";
+                                    cin >> menu;
+
+                                    if (menu == 1) {
+                                        cout << "=====DELETE FORUM=====" << endl;
+                                        cout << "Kode course: ";
+                                        cin >> code;
+                                        deleteForum(courses, code);
+                                    } else if (menu == 2) {
+                                        cout << "=====ADD QUIZ=====" << endl;
+                                        cout << "Kode course: ";
+                                        cin >> code;
+                                        addQuiz(courses, code);
+                                    } else if (menu == 3) {
+                                        cout << "=====DELETE QUIZ=====" << endl;
+                                        cout << "Kode course: ";
+                                        cin >> code;
+                                        deleteQuiz(courses, code);
+                                    } else if (menu == 4) {
+                                        cout << "=====EDIT QUIZ=====" << endl;
+                                        cout << "Kode course: ";
+                                        cin >> code;
+                                        editQuiz(courses, code);
+                                    } else if (menu == 5) {
+                                        cout << "=====QUIZ RESULT=====" << endl;
+                                        cout << "Kode course: ";
+                                        cin >> code;
+                                        printResult(courses, code);
+                                    } else if (menu == 6) {
+                                        cout << "=====EDIT TASK=====" << endl;
+                                        cout << "Kode course: ";
+                                        cin >> code;
+                                        editTask(courses, code);
+                                    }
+                                } while (menu != 7);
+                            }
+                        } while (menu != 3);
                     } else if (menu == 2) {
                         cout << "=====ALL USERS=====" << endl;
                         printAllUsers(users);

@@ -69,6 +69,7 @@ void sortCourses(ListCourse &L);
 void printAllCourses(ListCourse L);
 void printCourse(ListCourse L, string code);
 void printUsersInCourse(ListCourse L, string code);
+void printEnrolledCourse(ListCourse L, string UID);
 
 void printForum(ListCourse L, string code);
 void addForum(ListCourse &L, string code);
