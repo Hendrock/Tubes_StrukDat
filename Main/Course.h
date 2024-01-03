@@ -63,8 +63,6 @@ addressCourse alokasiCourse(infotypeCourse x);
 void dealokasiCourse(addressCourse &P);
 addressCourse findElmCourse(ListCourse L, string code);
 
-void enroll(ListCourse &L, string UID)
-
 void sortCourses(ListCourse &L);
 void printAllCourses(ListCourse L);
 void printCourse(ListCourse L, string code);
