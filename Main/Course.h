@@ -59,6 +59,8 @@ void deleteFirstCourse(ListCourse &L, addressCourse &P);
 void deleteLastCourse(ListCourse &L, addressCourse &P);
 void deleteAfterCourse(ListCourse &L, addressCourse Prec, addressCourse &P);
 
+void deleteSpesificCourse(ListCourse &L, string code);
+
 addressCourse alokasiCourse(infotypeCourse x);
 void dealokasiCourse(addressCourse &P);
 addressCourse findElmCourse(ListCourse L, string code);

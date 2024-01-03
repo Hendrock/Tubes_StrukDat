@@ -100,6 +100,26 @@ void deleteAfterUser(ListUser &L, addressUser Prec, addressUser &P) {
     }
 }
 
+void deleteSpesificUser(ListUser &L, string UID){
+    addressUser P = findElmUser(L, UID);
+
+    if (P != NULL){
+        if (P == first(L)){
+            deleteFirstUser(L, P);
+        } else if (P == last(L)){
+            deleteLastUser(L, P);
+        } else {
+            addressUser Q = first(L);
+            while (next(Q) != P){
+                Q = next(Q);
+            }
+            deleteAfterUser(L, Q, P);
+        }
+    } else {
+        printf("User %s tidak ditemukan.\n", UID.c_str());
+    }
+}
+
 addressUser findElmUser(ListUser L, string UID) {
     addressUser P = first(L);
     do {
@@ -116,7 +136,7 @@ void printAllUsers(ListUser L){
 
     if (P != NULL){
         do {
-            printf("%s (User ID: %s)\n", info(P).name.c_str(), info(P).UID.c_str());
+            printf("%s (User ID: %s) - %s\n", info(P).name.c_str(), info(P).UID.c_str(), info(P).role.c_str());
             P = next(P);
         } while (P != first(L));
     } else {

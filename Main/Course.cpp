@@ -91,6 +91,26 @@ void deleteAfterCourse(ListCourse &L, addressCourse Prec, addressCourse &P) {
     }
 }
 
+void deleteSpesificCourse(ListCourse &L, string code){
+    addressCourse P = findElmCourse(L, code);
+
+    if (P != NULL){
+        if (P == first(L)){
+            deleteFirstCourse(L, P);
+        } else if (P == last(L)){
+            deleteLastCourse(L, P);
+        } else {
+            addressCourse Q = first(L);
+            while (next(Q) != P){
+                Q = next(Q);
+            }
+            deleteAfterCourse(L, Q, P);
+        }
+    } else {
+        printf("Course %s tidak ditemukan.\n", code.c_str());
+    }
+}
+
 void sortCourses(ListCourse &L) {
     addressCourse P, Q;
     infotypeCourse temp;
@@ -129,7 +149,7 @@ void printAllCourses(ListCourse L) {
             while (P != NULL) {
             printf("%s (%s)\t- User: %d\n", info(P).name.c_str(), info(P).code.c_str(), info(P).nUser);
             printForum(L, info(P).code);
-            cout << info(P).task << endl;
+            printf("Task: %s\n", info(P).task.c_str());
             P = next(P);
         }
     } else {
@@ -143,7 +163,7 @@ void printCourse(ListCourse L, string code){
     if (P != NULL){
         printf("%s (%s)\t- User: %d\n", info(P).name.c_str(), info(P).code.c_str(), info(P).nUser);
         printForum(L, info(P).code);
-        cout << info(P).task << endl;
+        printf("Task: %s\n", info(P).task.c_str());
     } else {
         printf("Course %s tidak ditemukan.\n", code.c_str());
     }
@@ -155,7 +175,7 @@ void printUsersInCourse(ListCourse L, string code) {
 
     if (P != NULL && Q != NULL){
         while (Q != NULL) {
-            cout << info(user(Q)).name << " ";
+            printf("%s (User ID: %s) - %s\n", info(user(Q)).name.c_str(), info(user(Q)).UID.c_str(), info(user(Q)).role.c_str());
             Q = next(Q);
         }
     } else {
@@ -168,8 +188,8 @@ void printForum(ListCourse L, string code){
 
     if (info(P).nForum != 0){
         for (int i = 0; i < info(P).nForum; i++){
-            printf("\n[ID. %d] %s", info(P).nForum, info(P).forum[i].title.c_str());
-            printf("\n\t%s", info(P).forum[i].body.c_str());
+            printf("[ID. %d] %s\n", info(P).nForum, info(P).forum[i].title.c_str());
+            printf("\t%s\n", info(P).forum[i].body.c_str());
         }
     } else {
         cout << "Tidak ada content di forum ini." << endl;
@@ -179,20 +199,15 @@ void printForum(ListCourse L, string code){
 void addForum(ListCourse &L, string code){
     addressCourse P = findElmCourse(L, code);
 
-    printForum(L, code);
-
     if (info(P).nForum != 0){
         cout << "Judul Forum: ";
         cin >> info(P).forum[info(P).nForum].title;
         cout << "Isi Forum:" << endl;
         getline(cin, info(P).forum[info(P).nForum].body);
-        cout << "Berhasil!" << endl;
 
         info(P).nForum++;
 
         cout << "Penambahan berhasil!" << endl;
-
-        printForum(L, code);
     }
 }
 
@@ -347,6 +362,8 @@ void doQuiz(ListCourse &L, string code, string UID){
                 }
             }
 
+            printf("Anda mendapatkan nilai %d.", tempScore);
+
             info(P).result[info(P).nResult].UID = UID;
             info(P).result[info(P).nResult].score = tempScore;
         } else {
@@ -401,8 +418,6 @@ void printResult(ListCourse L, string code) {
 
 void editTask(ListCourse &L, string code){
     addressCourse P = findElmCourse(L, code);
-
-    cout << info(P).task << endl;
 
     cout << "Masukan Task Baru : ";
     getline(cin, info(P).task);

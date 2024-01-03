@@ -35,6 +35,8 @@ void deleteFirstUser(ListUser &L, addressUser &P);
 void deleteLastUser(ListUser &L, addressUser &P);
 void deleteAfterUser(ListUser &L, addressUser Prec, addressUser &P);
 
+void deleteSpesificUser(ListUser &L, string UID);
+
 addressUser alokasiUser(infotypeUser x);
 void dealokasiUser(addressUser &P);
 addressUser findElmUser(ListUser L, string UID);
