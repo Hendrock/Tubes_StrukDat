@@ -10,7 +10,7 @@ int main() {
     int menu;
     char choice;
     bool login = false;
-    string name, pass, id, role, code, task;
+    string name, pass, id, tempID, role, code, task;
     addressCourse tempC;
     addressUser tempU;
     infotypeUser tempUser;
@@ -95,7 +95,7 @@ int main() {
     tempCourse5.forum[0].title = "Research Paper Discussion";
     tempCourse5.forum[0].body = "Let's discuss ideas and issues related to the research paper.";
     tempCourse5.quiz[0].question = "What is a nucleophile in organic chemistry?";
-    tempCourse5.quiz[0].answer = "A nucleophile is a chemical species that donates an electron pair to an electrophile.";
+    tempCourse5.quiz[0].answer = "1";
     tempCourse5.quiz[0].point = 18;
     tempCourse5.nForum = 1;
     tempCourse5.nQuiz = 1;
@@ -222,12 +222,6 @@ int main() {
     insertLastRelasiUser(relasiUser(tempC2), alokasiRelasiUser(tempU12));
     info(tempC2).nUser++;
 
-    cout << info(tempC1).nUser << endl;
-    cout << info(tempC2).nUser << endl;
-    cout << info(tempC3).nUser << endl;
-    cout << info(tempC4).nUser << endl;
-    cout << info(tempC5).nUser << endl;
-
     do {
         cout << "=================================================" << endl;
         cout << "================== MENU =========================" << endl;
@@ -266,8 +260,6 @@ int main() {
             info(tempC).nUser++;
 
             cout << "Akun berhasil terdaftar." << endl;
-
-            printAllUsers(users);
         } else if (menu == 2) {
             cout << "Masukan ID: ";
             cin >> id;
@@ -381,7 +373,8 @@ int main() {
                                     cout << "4. EDIT QUIZ" << endl;
                                     cout << "5. QUIZ RESULT" << endl;
                                     cout << "6. EDIT TASK" << endl;
-                                    cout << "7. BACK TO COURSES" << endl;
+                                    cout << "7. ADD STUDENT" << endl;
+                                    cout << "8. BACK TO COURSES" << endl;
                                     cout << "Pilihan: ";
                                     cin >> menu;
 
@@ -415,8 +408,21 @@ int main() {
                                         cout << "Kode course: ";
                                         cin >> code;
                                         editTask(courses, code);
+                                    } else if (menu == 7) {
+                                        cout << "=====ADD STUDENT=====" << endl;
+                                        cout << "UID mahasiswa: ";
+                                        cin >> tempID;
+                                        tempU = findElmUser(users, tempID);
+
+                                        if (tempU != NULL){
+                                            cout << "Kode course: ";
+                                            cin >> code;
+                                            tempC = findElmCourse(courses, code);
+                                            insertLastRelasiUser(relasiUser(tempC), alokasiRelasiUser(tempU));
+                                            info(tempC).nUser++;
+                                        }
                                     }
-                                } while (menu != 7);
+                                } while (menu != 8);
                             }
                         } while (menu != 3);
                     } else if (menu == 2) {

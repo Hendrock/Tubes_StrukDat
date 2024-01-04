@@ -65,7 +65,7 @@ addressCourse alokasiCourse(infotypeCourse x);
 void dealokasiCourse(addressCourse &P);
 addressCourse findElmCourse(ListCourse L, string code);
 
-void sortCourses(ListCourse &L);
+void sortCourses(ListCourse L, ListCourse &sortedL);
 void printAllCourses(ListCourse L);
 void printCourse(ListCourse L, string code);
 void printUsersInCourse(ListCourse L, string code);
@@ -81,10 +81,8 @@ void deleteQuiz(ListCourse &L, string code);
 void editQuiz(ListCourse &L, string code);
 void doQuiz(ListCourse &L, string code, string UID);
 
-void sortResult(ListCourse &L, string code);
 void printResult(ListCourse L, string code);
 
 void editTask(ListCourse &L, string code);
-
 
 #endif // COURSE_H_INCLUDED

@@ -111,25 +111,6 @@ void deleteSpesificCourse(ListCourse &L, string code){
     }
 }
 
-void sortCourses(ListCourse &L) {
-    addressCourse P, Q;
-    infotypeCourse temp;
-
-    if (first(L) != NULL) {
-        for (P = first(L); next(P) != NULL; P = next(P)) {
-            for (Q = next(P); Q != NULL; Q = next(Q)) {
-                if (info(P).nUser < info(Q).nUser) {
-                    temp = info(P);
-                    info(P) = info(Q);
-                    info(Q) = temp;
-                }
-            }
-        }
-    } else {
-        cout << "List courses kosong." << endl;
-    }
-}
-
 addressCourse findElmCourse(ListCourse L, string code) {
     addressCourse P = first(L);
     while (P != NULL) {
@@ -141,9 +122,39 @@ addressCourse findElmCourse(ListCourse L, string code) {
     return NULL;
 }
 
-void printAllCourses(ListCourse L) {
-    sortCourses(L);
+void sortCourses(ListCourse L, ListCourse &sortedL) {
     addressCourse P = first(L);
+    while (P != NULL) {
+        infotypeCourse tempCourse = info(P);
+        insertLastCourse(sortedL, alokasiCourse(tempCourse));
+        P = next(P);
+    }
+
+    addressCourse Q, R;
+    infotypeCourse temp;
+
+    if (first(sortedL) != NULL) {
+        for (Q = first(sortedL); next(Q) != NULL; Q = next(Q)) {
+            for (R = next(Q); R != NULL; R = next(R)) {
+                if (info(Q).nUser < info(R).nUser) {
+                    temp = info(Q);
+                    info(Q) = info(R);
+                    info(R) = temp;
+                }
+            }
+        }
+    } else {
+        cout << "List courses kosong." << endl;
+    }
+}
+
+void printAllCourses(ListCourse L) {
+    ListCourse sortedList;
+    createListCourse(sortedList);
+
+    sortCourses(L, sortedList);
+
+    addressCourse P = first(sortedList);
 
     if (P != NULL){
             while (P != NULL) {
@@ -222,9 +233,9 @@ void addForum(ListCourse &L, string code){
 
     if (info(P).nForum != 0){
         cout << "Judul Forum: ";
-        cin >> info(P).forum[info(P).nForum].title;
-        cout << "Isi Forum:" << endl;
         cin.ignore();
+        getline(cin, info(P).forum[info(P).nForum].title);
+        cout << "Isi Forum:" << endl;
         getline(cin, info(P).forum[info(P).nForum].body);
 
         info(P).nForum++;
@@ -285,7 +296,6 @@ void addQuiz(ListCourse &L, string code){
         cin.ignore();
         getline(cin, info(P).quiz[info(P).nQuiz].question);
         cout << "Jawaban:" << endl;
-        cin.ignore();
         getline(cin, info(P).quiz[info(P).nQuiz].answer);
         cout << "Poin:" << endl;
         cin >> info(P).quiz[info(P).nQuiz].point;
@@ -380,12 +390,12 @@ void doQuiz(ListCourse &L, string code, string UID){
         if (info(P).nQuiz != 0){
             string tempAnswer;
             int tempScore = 0;
+            cin.ignore();
 
             for (int i = 0; i < info(P).nQuiz; i++){
                 printf("[No. %d] Point: %d\n", i + 1, info(P).quiz[i].point);
                 printf("\t%s\n", info(P).quiz[i].question.c_str());
                 cout << "Jawaban: ";
-                cin.ignore();
                 getline(cin, tempAnswer);
 
                 if (tempAnswer == info(P).quiz[i].answer){
@@ -407,41 +417,21 @@ void doQuiz(ListCourse &L, string code, string UID){
     }
 }
 
-void sortResult(ListCourse &L, string code) {
-    addressCourse P = findElmCourse(L, code);
-
-    if (P != NULL) {
-        elmResult temp;
-
-        for (int i = 0; i < info(P).nResult - 1; i++) {
-            for (int j = 0; j < info(P).nResult - i - 1; j++) {
-                if (info(P).result[j].score < info(P).result[j + 1].score) {
-                    temp = info(P).result[j];
-                    info(P).result[j] = info(P).result[j + 1];
-                    info(P).result[j + 1] = temp;
-                }
-            }
-        }
-    } else {
-        printf("Course %s tidak ditemukan.\n", code.c_str());
-    }
-}
-
 void printResult(ListCourse L, string code) {
     addressCourse P = findElmCourse(L, code);
 
     if (P != NULL) {
         if (info(P).nResult != 0) {
             printf("Results for %s (%s):\n", info(P).name.c_str(), code.c_str());
-            printf("---------------------------------------\n");
-            printf("Rank\tUID\tScore\n");
-            printf("---------------------------------------\n");
+            printf("--------------------\n");
+            printf("UID\tScore\n");
+            printf("--------------------\n");
 
             for (int i = 0; i < info(P).nResult; i++) {
                 printf("%d\t%s\t%d\n", i + 1, info(P).result[i].UID.c_str(), info(P).result[i].score);
             }
 
-            printf("---------------------------------------\n");
+            printf("--------------------\n");
         } else {
             cout << "Tidak ada hasil nilai di quiz ini." << endl;
         }
