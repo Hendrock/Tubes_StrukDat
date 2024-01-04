@@ -376,8 +376,8 @@ void doQuiz(ListCourse &L, string code, string UID){
             int tempScore = 0;
 
             for (int i = 0; i < info(P).nQuiz; i++){
-                printf("\n[No. %d] %d", info(P).nQuiz, info(P).quiz[i].point);
-                printf("\n\t%s", info(P).quiz[i].question.c_str());
+                printf("[No. %d] Point: %d\n", info(P).nQuiz, info(P).quiz[i].point);
+                printf("\t%s\n", info(P).quiz[i].question.c_str());
                 cout << "Jawaban: ";
                 cin.ignore();
                 getline(cin, tempAnswer);
@@ -386,6 +386,8 @@ void doQuiz(ListCourse &L, string code, string UID){
                     tempScore += info(P).quiz[i].point;
                 }
             }
+
+            info(P).nResult++;
 
             printf("Anda mendapatkan nilai %d.", tempScore);
 
