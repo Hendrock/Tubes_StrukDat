@@ -387,12 +387,12 @@ void doQuiz(ListCourse &L, string code, string UID){
                 }
             }
 
-            info(P).nResult++;
-
             printf("Anda mendapatkan nilai %d.", tempScore);
 
             info(P).result[info(P).nResult].UID = UID;
             info(P).result[info(P).nResult].score = tempScore;
+            
+            info(P).nResult++;
         } else {
             cout << "Tidak ada content di quiz ini." << endl;
         }
