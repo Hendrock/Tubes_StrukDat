@@ -203,13 +203,17 @@ void printEnrolledCourse(ListCourse L, string UID){
 void printForum(ListCourse L, string code){
     addressCourse P = findElmCourse(L, code);
 
-    if (info(P).nForum != 0){
-        for (int i = 0; i < info(P).nForum; i++){
-            printf("[ID. %d] %s\n", info(P).nForum, info(P).forum[i].title.c_str());
-            printf("\t%s\n", info(P).forum[i].body.c_str());
+    if (P != NULL){
+        if (info(P).nForum != 0){
+            for (int i = 0; i < info(P).nForum; i++){
+                printf("[ID. %d] %s\n", info(P).nForum, info(P).forum[i].title.c_str());
+                printf("\t%s\n", info(P).forum[i].body.c_str());
+            }
+        } else {
+            cout << "Tidak ada content di forum ini." << endl;
         }
     } else {
-        cout << "Tidak ada content di forum ini." << endl;
+        printf("Course %s tidak ditemukan.\n", code.c_str());
     }
 }
 
@@ -257,14 +261,18 @@ void deleteForum(ListCourse &L, string code){
 void printQuiz(ListCourse L, string code){
     addressCourse P = findElmCourse(L, code);
 
-    if (info(P).nQuiz != 0){
-        for (int i = 0; i < info(P).nQuiz; i++){
-            printf("\n[No. %d] %d", info(P).nQuiz, info(P).quiz[i].point);
-            printf("\n\t%s", info(P).quiz[i].question.c_str());
+    if (P != NULL){
+        if (info(P).nQuiz != 0){
+            for (int i = 0; i < info(P).nQuiz; i++){
+                printf("\n[No. %d] %d", info(P).nQuiz, info(P).quiz[i].point);
+                printf("\n\t%s", info(P).quiz[i].question.c_str());
+            }
+        } else {
+            cout << "Tidak ada content di quiz ini." << endl;
         }
-    } else {
-        cout << "Tidak ada content di quiz ini." << endl;
-    }
+     } else {
+        printf("Course %s tidak ditemukan.\n", code.c_str());
+     }
 }
 
 void addQuiz(ListCourse &L, string code){
@@ -429,6 +437,7 @@ void printResult(ListCourse L, string code) {
         } else {
             cout << "Tidak ada hasil nilai di quiz ini." << endl;
         }
+    } else {
         printf("Course %s tidak ditemukan.\n", code.c_str());
     }
 }

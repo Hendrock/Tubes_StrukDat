@@ -14,7 +14,7 @@ int main() {
     addressCourse tempC;
     addressUser tempU;
     infotypeUser tempUser;
-    infotypeCourse tempCourse;
+    infotypeCourse tempCourse, tempCourse1, tempCourse2, tempCourse3, tempCourse4, tempCourse5;
 
     ListCourse courses;
     ListUser users;
@@ -22,72 +22,84 @@ int main() {
     createListCourse(courses);
     createListUser(users);
 
-    // Inisialisasi 5 course dan 7 user (5 dosen & 2 mahasiswa)
     // Course 1
-    tempCourse.code = "MATH101";
-    tempCourse.name = "Mathematics I";
-    tempCourse.task = "Homework 1";
-    tempCourse.forum[0].title = "Introduction to Homework 1";
-    tempCourse.forum[0].body = "Let's discuss the problems and solutions for Homework 1.";
-    tempCourse.quiz[0].question = "What is the value of pi (π)?";
-    tempCourse.quiz[0].answer = "3.14159";
-    tempCourse.quiz[0].point = 10;
-    tempCourse.result[0].UID = "890123";
-    tempCourse.result[0].score = 8;
-    tempCourse.nForum = 1;
-    tempCourse.nQuiz = 1;
-    tempCourse.nResult = 1;
-    addressCourse tempC1 = alokasiCourse(tempCourse);
+    tempCourse1.code = "MATH101";
+    tempCourse1.name = "Mathematics I";
+    tempCourse1.task = "Homework 1";
+    tempCourse1.forum[0].title = "Introduction to Homework 1";
+    tempCourse1.forum[0].body = "Let's discuss the problems and solutions for Homework 1.";
+    tempCourse1.quiz[0].question = "What is the value of pi (π)?";
+    tempCourse1.quiz[0].answer = "3.14159";
+    tempCourse1.quiz[0].point = 10;
+    tempCourse1.result[0].UID = "890123";
+    tempCourse1.result[0].score = 8;
+    tempCourse1.result[1].UID = "678901";
+    tempCourse1.result[1].score = 9;
+    tempCourse1.nForum = 1;
+    tempCourse1.nQuiz = 1;
+    tempCourse1.nResult = 2;
+    addressCourse tempC1 = alokasiCourse(tempCourse1);
     insertLastCourse(courses, tempC1);
 
     // Course 2
-    tempCourse.code = "CS202";
-    tempCourse.name = "Data Structures";
-    tempCourse.task = "Programming Project";
-    tempCourse.forum[0].title = "Project Discussion";
-    tempCourse.forum[0].body = "Let's discuss ideas and issues related to the programming project.";
-    tempCourse.quiz[0].question = "What is a linked list?";
-    tempCourse.quiz[0].answer = "A data structure that consists of a sequence of elements, where each element points to the next element in the sequence.";
-    tempCourse.quiz[0].point = 20;
-    tempCourse.result[0].UID = "789012";
-    tempCourse.result[0].score = 18;
-    addressCourse tempC2 = alokasiCourse(tempCourse);
+    tempCourse2.code = "CS202";
+    tempCourse2.name = "Data Structures";
+    tempCourse2.task = "Programming Project";
+    tempCourse2.forum[0].title = "Project Discussion";
+    tempCourse2.forum[0].body = "Let's discuss ideas and issues related to the programming project.";
+    tempCourse2.quiz[0].question = "What is a linked list?";
+    tempCourse2.quiz[0].answer = "A data structure that consists of a sequence of elements, where each element points to the next element in the sequence.";
+    tempCourse2.quiz[0].point = 20;
+    tempCourse2.result[0].UID = "782461";
+    tempCourse2.result[0].score = 18;
+    tempCourse1.result[1].UID = "789012";
+    tempCourse1.result[1].score = 8;
+    tempCourse2.nForum = 1;
+    tempCourse2.nQuiz = 1;
+    tempCourse2.nResult = 2;
+    addressCourse tempC2 = alokasiCourse(tempCourse2);
     insertLastCourse(courses, tempC2);
 
     // Course 3
-    tempCourse.code = "ENG301";
-    tempCourse.name = "Advanced English";
-    tempCourse.task = "Essay";
-    tempCourse.forum[0].title = "Essay Discussion";
-    tempCourse.forum[0].body = "Let's discuss ideas and issues related to the essay.";
-    tempCourse.quiz[0].question = "Define the term 'metaphor' in the context of literature.";
-    tempCourse.quiz[0].answer = "A figure of speech in which a word or phrase is applied to an object or action to which it is not literally applicable.";
-    tempCourse.quiz[0].point = 15;
-    addressCourse tempC3 = alokasiCourse(tempCourse);
+    tempCourse3.code = "ENG301";
+    tempCourse3.name = "Advanced English";
+    tempCourse3.task = "Essay";
+    tempCourse3.forum[0].title = "Essay Discussion";
+    tempCourse3.forum[0].body = "Let's discuss ideas and issues related to the essay.";
+    tempCourse3.quiz[0].question = "Define the term 'metaphor' in the context of literature.";
+    tempCourse3.quiz[0].answer = "A figure of speech in which a word or phrase is applied to an object or action to which it is not literally applicable.";
+    tempCourse3.quiz[0].point = 15;
+    tempCourse3.nForum = 1;
+    tempCourse3.nQuiz = 1;
+    addressCourse tempC3 = alokasiCourse(tempCourse3);
     insertLastCourse(courses, tempC3);
 
     // Course 4
-    tempCourse.code = "PHYS102";
-    tempCourse.name = "Physics II";
-    tempCourse.task = "Lab Report";
-    tempCourse.forum[0].title = "Lab Report Discussion";
-    tempCourse.forum[0].body = "Let's discuss ideas and issues related to the lab report.";
-    tempCourse.quiz[0].question = "Explain the concept of electric flux.";
-    tempCourse.quiz[0].answer = "Electric flux is the measure of the electric field through a surface.";
-    tempCourse.quiz[0].point = 25;
-    addressCourse tempC4 = alokasiCourse(tempCourse);
+    tempCourse4.code = "PHYS102";
+    tempCourse4.name = "Physics II";
+    tempCourse4.task = "Lab Report";
+    tempCourse4.forum[0].title = "Lab Report Discussion";
+    tempCourse4.forum[0].body = "Let's discuss ideas and issues related to the lab report.";
+    tempCourse4.quiz[0].question = "Explain the concept of electric flux.";
+    tempCourse4.quiz[0].answer = "Electric flux is the measure of the electric field through a surface.";
+    tempCourse4.quiz[0].point = 25;
+    tempCourse4.nForum = 1;
+    tempCourse4.nQuiz = 1;
+    addressCourse tempC4 = alokasiCourse(tempCourse4);
     insertLastCourse(courses, tempC4);
 
     // Course 5
-    tempCourse.code = "CHEM201";
-    tempCourse.name = "Organic Chemistry";
-    tempCourse.task = "Research Paper";
-    tempCourse.forum[0].title = "Research Paper Discussion";
-    tempCourse.forum[0].body = "Let's discuss ideas and issues related to the research paper.";
-    tempCourse.quiz[0].question = "What is a nucleophile in organic chemistry?";
-    tempCourse.quiz[0].answer = "A nucleophile is a chemical species that donates an electron pair to an electrophile.";
-    tempCourse.quiz[0].point = 18;
-    addressCourse tempC5 = alokasiCourse(tempCourse);
+    tempCourse5.code = "CHEM201";
+    tempCourse5.name = "Organic Chemistry";
+    tempCourse5.task = "Research Paper";
+    tempCourse5.forum[0].title = "Research Paper Discussion";
+    tempCourse5.forum[0].body = "Let's discuss ideas and issues related to the research paper.";
+    tempCourse5.quiz[0].question = "What is a nucleophile in organic chemistry?";
+    tempCourse5.quiz[0].answer = "A nucleophile is a chemical species that donates an electron pair to an electrophile.";
+    tempCourse5.quiz[0].point = 18;
+    tempCourse5.nForum = 1;
+    tempCourse5.nQuiz = 1;
+    addressCourse tempC5 = alokasiCourse(tempCourse5);
     insertLastCourse(courses, tempC5);
 
     // User 1
@@ -154,11 +166,67 @@ int main() {
     tempUser.name = "Jane";
     tempUser.password = "jane456";
     tempUser.role = "Mahasiswa";
-    tempUser.UID = "789012";
+    tempUser.UID = "782461";
     addressUser tempU7 = alokasiUser(tempUser);
     insertLastUser(users, tempU7);
     insertLastRelasiUser(relasiUser(tempC2), alokasiRelasiUser(tempU7));
     info(tempC2).nUser++;
+
+    // User 8
+    tempUser.name = "Fiona";
+    tempUser.password = "fiona789";
+    tempUser.role = "Mahasiswa";
+    tempUser.UID = "345678";
+    addressUser tempU8 = alokasiUser(tempUser);
+    insertLastUser(users, tempU8);
+    insertLastRelasiUser(relasiUser(tempC3), alokasiRelasiUser(tempU8));
+    info(tempC3).nUser++;
+
+    // User 9
+    tempUser.name = "George";
+    tempUser.password = "george123";
+    tempUser.role = "Mahasiswa";
+    tempUser.UID = "456789";
+    addressUser tempU9 = alokasiUser(tempUser);
+    insertLastUser(users, tempU9);
+    insertLastRelasiUser(relasiUser(tempC4), alokasiRelasiUser(tempU9));
+    info(tempC4).nUser++;
+
+    // User 10
+    tempUser.name = "Hannah";
+    tempUser.password = "hannah456";
+    tempUser.role = "Mahasiswa";
+    tempUser.UID = "567890";
+    addressUser tempU10 = alokasiUser(tempUser);
+    insertLastUser(users, tempU10);
+    insertLastRelasiUser(relasiUser(tempC5), alokasiRelasiUser(tempU10));
+    info(tempC5).nUser++;
+
+    // User 11
+    tempUser.name = "Isaac";
+    tempUser.password = "isaac789";
+    tempUser.role = "Mahasiswa";
+    tempUser.UID = "678901";
+    addressUser tempU11 = alokasiUser(tempUser);
+    insertLastUser(users, tempU11);
+    insertLastRelasiUser(relasiUser(tempC1), alokasiRelasiUser(tempU11));
+    info(tempC1).nUser++;
+
+    // User 12
+    tempUser.name = "Jasmine";
+    tempUser.password = "jasmine123";
+    tempUser.role = "Mahasiswa";
+    tempUser.UID = "789012";
+    addressUser tempU12 = alokasiUser(tempUser);
+    insertLastUser(users, tempU12);
+    insertLastRelasiUser(relasiUser(tempC2), alokasiRelasiUser(tempU12));
+    info(tempC2).nUser++;
+
+    cout << info(tempC1).nUser << endl;
+    cout << info(tempC2).nUser << endl;
+    cout << info(tempC3).nUser << endl;
+    cout << info(tempC4).nUser << endl;
+    cout << info(tempC5).nUser << endl;
 
     do {
         cout << "=================================================" << endl;
@@ -207,12 +275,12 @@ int main() {
             cin >> pass;
 
             tempU = findElmUser(users, id);
-            if (tempU != NULL) {
+            if (tempU != NULL && info(tempU).password == pass) {
                 cout << "Berhasil login." << endl;
                 login = true;
                 role = info(tempU).role;
             } else {
-                cout << "Akun belum terdaftar." << endl;
+                cout << "Akun belum terdaftar atau password salah." << endl;
             }
         } else if (menu == 3) {
             if (!login){
@@ -289,13 +357,12 @@ int main() {
                                     cin >> menu;
 
                                     if (menu == 1) {
-                                        infotypeCourse dummyCourse;
                                         cout << "Nama course: ";
                                         cin.ignore();
-                                        getline(cin, dummyCourse.name);
+                                        getline(cin, tempCourse.name);
                                         cout << "Kode course: ";
-                                        cin >> dummyCourse.code;
-                                        insertLastCourse(courses, alokasiCourse(dummyCourse));
+                                        cin >> tempCourse.code;
+                                        insertLastCourse(courses, alokasiCourse(tempCourse));
                                     } else if (menu == 2){
                                         cout << "Kode course: ";
                                         cin >> code;
