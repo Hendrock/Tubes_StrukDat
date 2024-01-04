@@ -95,7 +95,7 @@ int main() {
     tempCourse5.forum[0].title = "Research Paper Discussion";
     tempCourse5.forum[0].body = "Let's discuss ideas and issues related to the research paper.";
     tempCourse5.quiz[0].question = "What is a nucleophile in organic chemistry?";
-    tempCourse5.quiz[0].answer = "1";
+    tempCourse5.quiz[0].answer = "A nucleophile is a chemical species that donates an electron pair to an electrophile.";
     tempCourse5.quiz[0].point = 18;
     tempCourse5.nForum = 1;
     tempCourse5.nQuiz = 1;
@@ -181,6 +181,8 @@ int main() {
     insertLastUser(users, tempU8);
     insertLastRelasiUser(relasiUser(tempC3), alokasiRelasiUser(tempU8));
     info(tempC3).nUser++;
+    insertLastRelasiUser(relasiUser(tempC5), alokasiRelasiUser(tempU8));
+    info(tempC5).nUser++;
 
     // User 9
     tempUser.name = "George";
