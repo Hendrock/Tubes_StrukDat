@@ -281,6 +281,7 @@ int main() {
                 role = info(tempU).role;
             } else {
                 cout << "Akun belum terdaftar atau password salah." << endl;
+                login = false;
             }
         } else if (menu == 3) {
             if (!login){
