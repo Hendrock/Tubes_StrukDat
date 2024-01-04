@@ -247,15 +247,15 @@ int main() {
             cout << "Masukan nama: ";
             cin >> name;
             tempUser.name = name;
+            cout << "Masukan ID: ";
+            cin >> id;
+            tempUser.UID = id;
             cout << "Masukan password: ";
             cin >> pass;
             tempUser.password = pass;
             cout << "Masukan role (Mahasiswa/Dosen): ";
             cin >> role;
             tempUser.role = role;
-            cout << "Masukan ID: ";
-            cin >> id;
-            tempUser.UID = id;
             cout << "Masukan course: ";
             cin >> code;
 

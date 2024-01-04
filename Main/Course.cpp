@@ -206,7 +206,7 @@ void printForum(ListCourse L, string code){
     if (P != NULL){
         if (info(P).nForum != 0){
             for (int i = 0; i < info(P).nForum; i++){
-                printf("[ID. %d] %s\n", info(P).nForum, info(P).forum[i].title.c_str());
+                printf("[ID. %d] %s\n", i + 1, info(P).forum[i].title.c_str());
                 printf("\t%s\n", info(P).forum[i].body.c_str());
             }
         } else {
@@ -224,6 +224,7 @@ void addForum(ListCourse &L, string code){
         cout << "Judul Forum: ";
         cin >> info(P).forum[info(P).nForum].title;
         cout << "Isi Forum:" << endl;
+        cin.ignore();
         getline(cin, info(P).forum[info(P).nForum].body);
 
         info(P).nForum++;
@@ -242,10 +243,10 @@ void deleteForum(ListCourse &L, string code){
         cout << "ID forum yang ingin dihapus: ";
         cin >> ID;
 
-        if (ID < 0 || ID >= info(P).nForum){
+        if (ID - 1 < 0 || ID - 1 >= info(P).nForum){
             printf("ID forum %d diluar indeks.\n", ID);
         } else {
-            for (int i = ID; i < info(P).nForum - 1; i++) {
+            for (int i = ID - 1; i < info(P).nForum - 1; i++) {
                 info(P).forum[i] = info(P).forum[i + 1];
             }
 
@@ -264,8 +265,9 @@ void printQuiz(ListCourse L, string code){
     if (P != NULL){
         if (info(P).nQuiz != 0){
             for (int i = 0; i < info(P).nQuiz; i++){
-                printf("\n[No. %d] %d", info(P).nQuiz, info(P).quiz[i].point);
-                printf("\n\t%s", info(P).quiz[i].question.c_str());
+                printf("[No. %d] Point: %d\n", i + 1, info(P).quiz[i].point);
+                printf("\t%s\n", info(P).quiz[i].question.c_str());
+                printf("\tAnswer: %s\n", info(P).quiz[i].answer.c_str());
             }
         } else {
             cout << "Tidak ada content di quiz ini." << endl;
@@ -278,12 +280,12 @@ void printQuiz(ListCourse L, string code){
 void addQuiz(ListCourse &L, string code){
     addressCourse P = findElmCourse(L, code);
 
-    printQuiz(L, code);
-
     if (info(P).nQuiz != 0){
         cout << "Pertanyaan:" << endl;
+        cin.ignore();
         getline(cin, info(P).quiz[info(P).nQuiz].question);
         cout << "Jawaban:" << endl;
+        cin.ignore();
         getline(cin, info(P).quiz[info(P).nQuiz].answer);
         cout << "Poin:" << endl;
         cin >> info(P).quiz[info(P).nQuiz].point;
@@ -293,7 +295,7 @@ void addQuiz(ListCourse &L, string code){
 
         cout << "Penambahan berhasil!" << endl;
 
-        printForum(L, code);
+        printQuiz(L, code);
     }
 }
 
@@ -307,10 +309,10 @@ void deleteQuiz(ListCourse &L, string code){
         cout << "Nomor soal yang ingin dihapus: ";
         cin >> ID;
 
-        if (ID - 1 < 0 || ID - 1 >= info(P).nForum){
+        if (ID - 1 < 0 || ID - 1 >= info(P).nQuiz){
             printf("Soal nomor %d diluar indeks.\n", ID);
         } else {
-            for (int i = ID - 1; i < info(P).nQuiz - 1; i++) {
+            for (int i = ID - 1; i < info(P).nQuiz; i++) {
                 info(P).quiz[i] = info(P).quiz[i + 1];
             }
 
@@ -334,13 +336,14 @@ void editQuiz(ListCourse &L, string code){
         cout << "Nomor soal yang ingin diubah: ";
         cin >> ID;
 
-        if (ID - 1 < 0 || ID - 1 >= info(P).nForum){
+        if (ID - 1 < 0 || ID - 1 >= info(P).nQuiz){
             printf("Soal nomor %d diluar indeks.\n", ID);
         } else {
             cout << "Pilih elemen yang ingin diubah:" << endl;
-            printf("\t[1] Pertanyaan Soal\n");
-            printf("\t[2] Jawaban Soal\n");
-            printf("\t[3] Poin Soal\n");
+            cout << "[1] Pertanyaan Soal" << endl;
+            cout << "[2] Jawaban Soal" << endl;
+            cout << "[3] Poin Soal" << endl;
+            cout << "Pilihan: ";
             cin >> choice;
 
             switch (choice) {
@@ -348,13 +351,16 @@ void editQuiz(ListCourse &L, string code){
                     cout << "Pertanyaan Soal: ";
                     cin.ignore();
                     getline(cin, info(P).quiz[ID - 1].question);
+                    break;
                 case 2:
                     cout << "Jawaban Soal: ";
                     cin.ignore();
                     getline(cin, info(P).quiz[ID - 1].answer);
+                    break;
                 case 3:
                     cout << "Poin Soal: ";
                     cin >> info(P).quiz[ID - 1].point;
+                    break;
                 default:
                     cout << "Pilihan tidak valid." << endl;
                     return;
@@ -376,7 +382,7 @@ void doQuiz(ListCourse &L, string code, string UID){
             int tempScore = 0;
 
             for (int i = 0; i < info(P).nQuiz; i++){
-                printf("[No. %d] Point: %d\n", info(P).nQuiz, info(P).quiz[i].point);
+                printf("[No. %d] Point: %d\n", i + 1, info(P).quiz[i].point);
                 printf("\t%s\n", info(P).quiz[i].question.c_str());
                 cout << "Jawaban: ";
                 cin.ignore();
@@ -387,11 +393,11 @@ void doQuiz(ListCourse &L, string code, string UID){
                 }
             }
 
-            printf("Anda mendapatkan nilai %d.", tempScore);
+            printf("Anda mendapatkan nilai %d.\n", tempScore);
 
             info(P).result[info(P).nResult].UID = UID;
             info(P).result[info(P).nResult].score = tempScore;
-            
+
             info(P).nResult++;
         } else {
             cout << "Tidak ada content di quiz ini." << endl;
@@ -448,6 +454,7 @@ void editTask(ListCourse &L, string code){
     addressCourse P = findElmCourse(L, code);
 
     cout << "Masukan Task Baru : ";
+    cin.ignore();
     getline(cin, info(P).task);
 
     cout << "Perubahan berhasil!" << endl;
